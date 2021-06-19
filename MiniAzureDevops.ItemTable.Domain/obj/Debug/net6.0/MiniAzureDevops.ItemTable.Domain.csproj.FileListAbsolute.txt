@@ -1,0 +1,12 @@
+C:\Users\valentin.nikolov\source\repos\MiniAzureDevops.ItemTable\MiniAzureDevops.ItemTable.Domain\bin\Debug\net6.0\MiniAzureDevops.ItemTable.Domain.deps.json
+C:\Users\valentin.nikolov\source\repos\MiniAzureDevops.ItemTable\MiniAzureDevops.ItemTable.Domain\bin\Debug\net6.0\MiniAzureDevops.ItemTable.Domain.dll
+C:\Users\valentin.nikolov\source\repos\MiniAzureDevops.ItemTable\MiniAzureDevops.ItemTable.Domain\bin\Debug\net6.0\ref\MiniAzureDevops.ItemTable.Domain.dll
+C:\Users\valentin.nikolov\source\repos\MiniAzureDevops.ItemTable\MiniAzureDevops.ItemTable.Domain\bin\Debug\net6.0\MiniAzureDevops.ItemTable.Domain.pdb
+C:\Users\valentin.nikolov\source\repos\MiniAzureDevops.ItemTable\MiniAzureDevops.ItemTable.Domain\obj\Debug\net6.0\MiniAzureDevops.ItemTable.Domain.csproj.AssemblyReference.cache
+C:\Users\valentin.nikolov\source\repos\MiniAzureDevops.ItemTable\MiniAzureDevops.ItemTable.Domain\obj\Debug\net6.0\MiniAzureDevops.ItemTable.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\valentin.nikolov\source\repos\MiniAzureDevops.ItemTable\MiniAzureDevops.ItemTable.Domain\obj\Debug\net6.0\MiniAzureDevops.ItemTable.Domain.AssemblyInfoInputs.cache
+C:\Users\valentin.nikolov\source\repos\MiniAzureDevops.ItemTable\MiniAzureDevops.ItemTable.Domain\obj\Debug\net6.0\MiniAzureDevops.ItemTable.Domain.AssemblyInfo.cs
+C:\Users\valentin.nikolov\source\repos\MiniAzureDevops.ItemTable\MiniAzureDevops.ItemTable.Domain\obj\Debug\net6.0\MiniAzureDevops.ItemTable.Domain.csproj.CoreCompileInputs.cache
+C:\Users\valentin.nikolov\source\repos\MiniAzureDevops.ItemTable\MiniAzureDevops.ItemTable.Domain\obj\Debug\net6.0\MiniAzureDevops.ItemTable.Domain.dll
+C:\Users\valentin.nikolov\source\repos\MiniAzureDevops.ItemTable\MiniAzureDevops.ItemTable.Domain\obj\Debug\net6.0\ref\MiniAzureDevops.ItemTable.Domain.dll
+C:\Users\valentin.nikolov\source\repos\MiniAzureDevops.ItemTable\MiniAzureDevops.ItemTable.Domain\obj\Debug\net6.0\MiniAzureDevops.ItemTable.Domain.pdb
