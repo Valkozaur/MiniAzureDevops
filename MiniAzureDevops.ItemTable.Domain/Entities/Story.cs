@@ -10,6 +10,8 @@ namespace MiniAzureDevops.ItemTable.Domain.Entities
 
         public string Description { get; set; }
 
+        public int OrderNumber { get; set; }
+
         public string Comments { get; set; }
 
         public string AssignedTo { get; set; }

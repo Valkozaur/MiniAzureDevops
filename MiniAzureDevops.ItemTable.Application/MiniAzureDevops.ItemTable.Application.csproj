@@ -14,8 +14,4 @@
     <ProjectReference Include="..\MiniAzureDevops.ItemTable.Domain\MiniAzureDevops.ItemTable.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\Table\Commands\" />
-  </ItemGroup>
-
 </Project>
