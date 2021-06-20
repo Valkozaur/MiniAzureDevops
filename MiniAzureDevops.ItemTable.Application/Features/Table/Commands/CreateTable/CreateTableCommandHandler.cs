@@ -22,6 +22,12 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Table.Commands.CreateTa
         {
             var table = this.mapper.Map<Domain.Entities.Table>(request);
 
+            var validator = new CreateTableCommandValidator();
+            var validatorResult = validator.Validate(request);
+
+            if (!validatorResult.IsValid)
+                throw new Exceptions.ValidationException(validatorResult);
+
             table = await this.tableRepository.AddAsync(table);
 
             return table.Id;

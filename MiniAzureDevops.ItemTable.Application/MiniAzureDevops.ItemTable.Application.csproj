@@ -15,4 +15,9 @@
     <ProjectReference Include="..\MiniAzureDevops.ItemTable.Domain\MiniAzureDevops.ItemTable.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\Column\Commands\UpdateColumn\" />
+    <Folder Include="Features\Common\" />
+  </ItemGroup>
+
 </Project>
