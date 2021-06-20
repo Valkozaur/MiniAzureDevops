@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -12,6 +12,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MiniAzureDevops.ItemTable.Domain\MiniAzureDevops.ItemTable.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\Table\Commands\" />
   </ItemGroup>
 
 </Project>
