@@ -7,6 +7,8 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Column.Commands.CreateC
     {
         public string Name { get; set; }
 
+        public int OrderNumber { get; set; }
+
         public Guid TableId { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using MiniAzureDevops.ItemTable.Domain.Common;
+﻿
+using MiniAzureDevops.ItemTable.Domain.Common;
 
 namespace MiniAzureDevops.ItemTable.Domain.Entities
 {

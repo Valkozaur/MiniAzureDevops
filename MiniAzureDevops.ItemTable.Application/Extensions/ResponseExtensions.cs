@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace MiniAzureDevops.ItemTable.Application.Extensions
 {
-    public static class BuildErrorResponseExtension
+    public static class ResponseExtensions
     {
         public static IResponse BuildErrorResponse(this IResponse response, List<ValidationFailure> errors)
         {
