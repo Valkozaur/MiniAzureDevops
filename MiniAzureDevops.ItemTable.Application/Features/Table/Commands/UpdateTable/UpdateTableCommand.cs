@@ -5,7 +5,7 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Table.Commands.UpdateTa
 {
     public class UpdateTableCommand : IRequest<Unit>
     {
-        public Guid Id { get; set; }
+        public Guid TableId { get; set; }
 
         public string Name { get; set; }
     }

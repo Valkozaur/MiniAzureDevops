@@ -19,7 +19,7 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Table.Commands.UpdateTa
 
         public async Task<Unit> Handle(UpdateTableCommand request, CancellationToken cancellationToken)
         {
-            var tableToUpdate = await this.tableRepository.GetByIdAsync(request.Id);
+            var tableToUpdate = await this.tableRepository.GetByIdAsync(request.TableId);
 
             this.mapper.Map(request, tableToUpdate, typeof(UpdateTableCommand), typeof(Domain.Entities.Table));
 
