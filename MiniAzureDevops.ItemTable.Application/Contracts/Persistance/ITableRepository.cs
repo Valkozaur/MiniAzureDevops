@@ -9,5 +9,7 @@ namespace MiniAzureDevops.ItemTable.Application.Contracts.Persistance
         Task<int> GetColumnCountByIdAsync(Guid tableId);
 
         Task<bool> ColumnNameIsUnique(Guid tableId, string columnName);
+
+        Task<bool> IsTableIdUnique(int tableId);
     }
 }

@@ -1,11 +1,11 @@
-﻿
-using MiniAzureDevops.ItemTable.Domain.Common;
+﻿using MediatR;
+using System;
 
-namespace MiniAzureDevops.ItemTable.Domain.Entities
+namespace MiniAzureDevops.ItemTable.Application.Features.Story.Commands.UpdateStory
 {
-    public class Story : BaseEntity
+    public class UpdateStoryCommand : IRequest
     {
-        public int TableId { get; set; }
+        public Guid Id { get;set; }
 
         public string Name { get; set; }
 
@@ -16,7 +16,5 @@ namespace MiniAzureDevops.ItemTable.Domain.Entities
         public string AssignedTo { get; set; }
 
         public string ColumnId { get; set; }
-
-        public Column Column { get; set; }
     }
 }

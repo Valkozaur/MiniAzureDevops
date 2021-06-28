@@ -2,7 +2,7 @@
 
 namespace MiniAzureDevops.ItemTable.Application.Features.Story.Commands.CreateStory
 {
-    public class StoryVm
+    public class StoryDto
     {
         public Guid Id { get; set; }
 
