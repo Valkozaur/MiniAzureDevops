@@ -1,6 +1,4 @@
-﻿using MiniAzureDevops.ItemTable.Domain.Entities;
-using System;
-using System.Collections.Generic;
+﻿using System;
 
 namespace MiniAzureDevops.ItemTable.Application.Features.Table.Queries.GetTableById
 {
@@ -9,7 +7,5 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Table.Queries.GetTableB
         public Guid Id { get; set; }
 
         public string Name { get; set; }
-
-        public HashSet<Column> Columns { get; set; } = new HashSet<Column>();
     }
 }

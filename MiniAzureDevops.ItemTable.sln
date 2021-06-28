@@ -15,9 +15,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{84A31207-2D6E-4189-9319-D6831642A71A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniAzureDevops.ItemTable.Domain", "MiniAzureDevops.ItemTable.Domain\MiniAzureDevops.ItemTable.Domain.csproj", "{0C035AC3-F6D9-464B-BC0B-C413BB381C83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiniAzureDevops.ItemTable.Domain", "MiniAzureDevops.ItemTable.Domain\MiniAzureDevops.ItemTable.Domain.csproj", "{0C035AC3-F6D9-464B-BC0B-C413BB381C83}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniAzureDevops.ItemTable.Application", "MiniAzureDevops.ItemTable.Application\MiniAzureDevops.ItemTable.Application.csproj", "{9A2C90AA-4FA1-4193-A04F-F8420A60D194}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiniAzureDevops.ItemTable.Application", "MiniAzureDevops.ItemTable.Application\MiniAzureDevops.ItemTable.Application.csproj", "{9A2C90AA-4FA1-4193-A04F-F8420A60D194}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniAzureDevops.ItemTable.Infrastructure", "MiniAzureDevops.ItemTable.Infrastructure\MiniAzureDevops.ItemTable.Infrastructure.csproj", "{14834F49-71A0-47CB-B469-94B130F934DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{9A2C90AA-4FA1-4193-A04F-F8420A60D194}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A2C90AA-4FA1-4193-A04F-F8420A60D194}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A2C90AA-4FA1-4193-A04F-F8420A60D194}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14834F49-71A0-47CB-B469-94B130F934DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14834F49-71A0-47CB-B469-94B130F934DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14834F49-71A0-47CB-B469-94B130F934DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14834F49-71A0-47CB-B469-94B130F934DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -44,6 +50,7 @@ Global
 		{84A31207-2D6E-4189-9319-D6831642A71A} = {3DA6CDC0-04D9-49DB-881C-99101A524E9D}
 		{0C035AC3-F6D9-464B-BC0B-C413BB381C83} = {85353622-32A5-4009-B191-FF93CBB4B5A8}
 		{9A2C90AA-4FA1-4193-A04F-F8420A60D194} = {85353622-32A5-4009-B191-FF93CBB4B5A8}
+		{14834F49-71A0-47CB-B469-94B130F934DC} = {9016FF43-5F03-411F-B027-0A4F4F17E7BC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AC3F7267-85C1-4E3D-8334-61512E043DC2}

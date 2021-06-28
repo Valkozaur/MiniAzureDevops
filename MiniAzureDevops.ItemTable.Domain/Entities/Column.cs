@@ -1,4 +1,5 @@
 ﻿using MiniAzureDevops.ItemTable.Domain.Common;
+using System;
 using System.Collections.Generic;
 
 namespace MiniAzureDevops.ItemTable.Domain.Entities
@@ -7,7 +8,7 @@ namespace MiniAzureDevops.ItemTable.Domain.Entities
     {
         public string Name { get; set; }
 
-        public string TableId { get; set; }
+        public Guid TableId { get; set; }
 
         public Table Table { get; set; }
 

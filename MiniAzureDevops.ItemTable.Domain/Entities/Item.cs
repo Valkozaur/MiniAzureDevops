@@ -1,4 +1,5 @@
 ﻿using MiniAzureDevops.ItemTable.Domain.Common;
+using MiniAzureDevops.ItemTable.Domain.Entities.Enumerations;
 
 namespace MiniAzureDevops.ItemTable.Domain.Entities
 {
@@ -10,7 +11,7 @@ namespace MiniAzureDevops.ItemTable.Domain.Entities
 
         public string Description { get; set; }
 
-        public string Comments { get; set; }
+        public ItemStatus ItemStatus { get; set; }
 
         public string AssignedTo { get; set; }
 
