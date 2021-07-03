@@ -1,14 +1,14 @@
 ﻿using MiniAzureDevops.ItemTable.Domain.Entities;
-using System;
+using MongoDB.Bson;
 using System.Threading.Tasks;
 
 namespace MiniAzureDevops.ItemTable.Application.Contracts.Persistance
 {
     public interface ITableRepository : IAsyncRepository<Table>
     {
-        Task<int> GetColumnCountByIdAsync(Guid tableId);
+        Task<int> GetColumnCountByIdAsync(ObjectId tableId);
 
-        Task<bool> ColumnNameIsUnique(Guid tableId, string columnName);
+        Task<bool> ColumnNameIsUnique(ObjectId tableId, string columnName);
 
         Task<bool> IsTableIdUnique(int tableId);
     }

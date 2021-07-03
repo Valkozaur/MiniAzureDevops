@@ -1,10 +1,11 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using System;
 
 namespace MiniAzureDevops.ItemTable.Domain.Common
 {
     public class BaseEntity
     {
-        public Guid Id { get; set; }
+        public ObjectId _Id { get; set; }
 
         public string CreatedBy { get; set; }
 

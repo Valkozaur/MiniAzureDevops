@@ -1,20 +1,19 @@
-﻿using System;
+﻿using MongoDB.Bson;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace MiniAzureDevops.ItemTable.Application.Contracts.Persistance
 {
     public interface IAsyncRepository<T> where T : class
     {
-        Task<T> GetByIdAsync(Guid id);
+        Task<T> GetByIdAsync(ObjectId id);
 
         Task<IReadOnlyList<T>> ListAllAsync();
 
         Task<T> AddAsync(T entity);
 
-        Task<T> UpdateAsync(T entity);
+        Task UpdateAsync(T entity);
 
-        Task<T> DeleteAsync(Guid id);
+        Task DeleteAsync(ObjectId id);
     }
 }
