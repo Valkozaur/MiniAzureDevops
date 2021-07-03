@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MiniAzureDevops.ItemTable.Application\MiniAzureDevops.ItemTable.Application.csproj" />
+    <ProjectReference Include="..\MiniAzureDevops.ItemTable.Persistance\MiniAzureDevops.ItemTable.Persistance.csproj" />
   </ItemGroup>
 
 </Project>
