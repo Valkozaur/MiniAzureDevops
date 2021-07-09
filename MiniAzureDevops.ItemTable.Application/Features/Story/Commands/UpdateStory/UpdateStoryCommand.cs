@@ -1,11 +1,11 @@
 ﻿using MediatR;
-using System;
+using MongoDB.Bson;
 
 namespace MiniAzureDevops.ItemTable.Application.Features.Story.Commands.UpdateStory
 {
     public class UpdateStoryCommand : IRequest
     {
-        public Guid Id { get;set; }
+        public ObjectId Id { get;set; }
 
         public string Name { get; set; }
 

@@ -1,8 +1,12 @@
-﻿using MediatR;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using MiniAzureDevops.ItemTable.Application.Features.Table.Commands.CreateTable;
+
+using MediatR;
 using MongoDB.Bson;
-using System.Threading.Tasks;
+
+using MiniAzureDevops.ItemTable.Application.Features.Table.Commands.CreateTable;
+using MiniAzureDevops.ItemTable.Application.Features.Table.Commands.UpdateTable;
+using MiniAzureDevops.ItemTable.Application.Features.Table.Queries.GetTableById;
 
 namespace MiniAzureDevops.ItemTable.Api.Controllers
 {
@@ -19,9 +23,16 @@ namespace MiniAzureDevops.ItemTable.Api.Controllers
 
         [HttpPost(Name = "AddTable")]
         public async Task<ActionResult<ObjectId>> Create(CreateTableCommand createTableCommand)
+            => Ok(await this.mediator.Send(createTableCommand));
+        
+
+        [HttpPost(Name = "UpdateTable")]
+        public async Task<ActionResult<TableVm>> Update(UpdateTableCommand updateTableCommand)
         {
-            var id = await this.mediator.Send(createTableCommand);
-            return Ok(id);
+            await this.mediator.Send(updateTableCommand);
+            var query = new GetTableByIdQuery() { Id = updateTableCommand.TableId };
+
+            return Ok(await this.mediator.Send(query));
         }
     }
 }

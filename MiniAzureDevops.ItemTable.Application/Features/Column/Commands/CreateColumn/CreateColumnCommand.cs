@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using System;
+using MongoDB.Bson;
 
 namespace MiniAzureDevops.ItemTable.Application.Features.Column.Commands.CreateColumn
 {
@@ -9,6 +9,6 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Column.Commands.CreateC
 
         public int OrderNumber { get; set; }
 
-        public Guid TableId { get; set; }
+        public ObjectId TableId { get; set; }
     }
 }

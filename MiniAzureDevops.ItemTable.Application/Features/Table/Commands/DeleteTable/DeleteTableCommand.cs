@@ -1,10 +1,10 @@
 ﻿using MediatR;
-using System;
+using MongoDB.Bson;
 
 namespace MiniAzureDevops.ItemTable.Application.Features.Table.Commands.DeleteTable
 {
     public class DeleteTableCommand : IRequest
     {
-        public Guid TableId { get; set; }
+        public ObjectId TableId { get; set; }
     }
 }

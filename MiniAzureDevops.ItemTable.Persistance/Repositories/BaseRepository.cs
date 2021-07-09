@@ -15,7 +15,7 @@ namespace MiniAzureDevops.ItemTable.Persistance.Repositories
         protected readonly IMongoClient mongoClient;
         protected IMongoCollection<T> collection;
 
-        protected BaseRepository(IMongoClient client)
+        public BaseRepository(IMongoClient client)
         {
             this.mongoClient = client;
             this.collection = client
@@ -46,7 +46,7 @@ namespace MiniAzureDevops.ItemTable.Persistance.Repositories
 
         public async Task UpdateAsync(T entity)
         {
-            await this.collection.ReplaceOneAsync(x => x._Id == entity._Id, entity)
+            await this.collection.ReplaceOneAsync(x => x._Id == entity._Id, entity);
         }
     }
 }

@@ -6,7 +6,7 @@ namespace MiniAzureDevops.ItemTable.Persistance.Repositories
 {
     public class StoryRepository : BaseRepository<Story>, IStoryRepository
     {
-        protected StoryRepository(IMongoClient client) : base(client)
+        public StoryRepository(IMongoClient client) : base(client)
         {
         }
     }

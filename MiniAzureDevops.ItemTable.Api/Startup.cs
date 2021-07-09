@@ -21,7 +21,8 @@ namespace MiniAzureDevops.ItemTable.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddApplicationServices();
-            services.UseMongoDb();
+            services.AddPersitanceServices();
+            services.UseMongoDb(this.Configuration);
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

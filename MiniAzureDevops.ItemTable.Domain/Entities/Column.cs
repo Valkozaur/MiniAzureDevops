@@ -1,5 +1,5 @@
 ﻿using MiniAzureDevops.ItemTable.Domain.Common;
-using System;
+using MongoDB.Bson;
 using System.Collections.Generic;
 
 namespace MiniAzureDevops.ItemTable.Domain.Entities
@@ -8,7 +8,7 @@ namespace MiniAzureDevops.ItemTable.Domain.Entities
     {
         public string Name { get; set; }
 
-        public Guid TableId { get; set; }
+        public ObjectId TableId { get; set; }
 
         public Table Table { get; set; }
 

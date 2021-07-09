@@ -1,7 +1,9 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using MiniAzureDevops.ItemTable.Application.Contracts.Persistance;
 using MiniAzureDevops.ItemTable.Domain.Entities;
+using MiniAzureDevops.ItemTable.Persistance.Repositories;
 using MongoDB.Driver;
-using MongoDB.Driver.Linq;
 
 using static MiniAzureDevops.ItemTable.Persistance.Utillities.CollectionNameHelper;
 
@@ -10,29 +12,39 @@ namespace MiniAzureDevops.ItemTable.Application
     public static class PersistanceRegistration
     {
         //TODO: Move connection and db name to app settings.
-        private const string ConnectionString = "mongodb://localhost:27017";
-        private const string DatabaseName = "MiniAzure.ItemTable";
-        private const string TableName = "TestTable1";
-
-        public static IServiceCollection UseMongoDb(this IServiceCollection services)
+        public static IServiceCollection UseMongoDb(this IServiceCollection services, IConfiguration configuration)
         {
-            MongoClient client = new MongoClient(ConnectionString);
-            var databases = client.GetDatabase(DatabaseName);
+            MongoClient client = new MongoClient(configuration.GetConnectionString("MiniAzureItemTableConnectionString"));
+            var databases = client.GetDatabase(configuration.GetConnectionString("DatabaseName"));
 
-            var table = new Table { Name = TableName };
 
+            var testTableName = "TEST";
+            var table = new Table { Name = testTableName };
             var tablesCollection = databases.GetCollection<Table>(PluralizeName(nameof(Table)));
 
-            //Create database
-            if (!tablesCollection.AsQueryable().Where(x => x.Name == TableName).Any())
+
+            //If we can't get the table 
+            var getTable = tablesCollection.Find(x => x.Name == testTableName).FirstOrDefault();
+            //we Create the database with tables. 
+            if (getTable == null)
             {
                 databases.CreateCollection(PluralizeName(nameof(Table)));
-                databases.CreateCollection(PluralizeName(nameof(Column)));
-                databases.CreateCollection(PluralizeName(nameof(Item)));
                 databases.CreateCollection(PluralizeName(nameof(Story)));
 
                 databases.GetCollection<Table>(PluralizeName(nameof(Table))).InsertOne(table);
             }
+
+            return services;
+        }
+
+        public static IServiceCollection AddPersitanceServices(this IServiceCollection services)
+        {
+            services.AddScoped<IMongoClient, MongoClient>();
+            services.AddScoped(typeof(IAsyncRepository<>), typeof(BaseRepository<>));
+            services.AddScoped<ITableRepository, TableRepository>();
+            services.AddScoped<IColumnRepository, ColumnRepository >();
+            services.AddScoped<IStoryRepository, StoryRepository>();
+            services.AddScoped<IItemRepository, ItemRepository>();
 
             return services;
         }

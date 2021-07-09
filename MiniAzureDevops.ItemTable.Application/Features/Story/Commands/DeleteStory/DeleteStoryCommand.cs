@@ -1,10 +1,10 @@
 ﻿using MediatR;
-using System;
+using MongoDB.Bson;
 
 namespace MiniAzureDevops.ItemTable.Application.Features.Story.Commands.DeleteStory
 {
     public class DeleteStoryCommand : IRequest
     {
-        public Guid StoryId { get; set; }
+        public ObjectId StoryId { get; set; }
     }
 }

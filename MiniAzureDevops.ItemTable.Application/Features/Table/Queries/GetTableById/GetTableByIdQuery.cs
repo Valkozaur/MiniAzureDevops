@@ -1,10 +1,10 @@
 ﻿using MediatR;
-using System;
+using MongoDB.Bson;
 
 namespace MiniAzureDevops.ItemTable.Application.Features.Table.Queries.GetTableById
 {
     public class GetTableByIdQuery : IRequest<TableVm>
     {
-        public Guid Id { get; set; }
+        public ObjectId Id { get; set; }
     }
 }

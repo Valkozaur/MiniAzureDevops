@@ -1,11 +1,11 @@
 ﻿using MediatR;
-using System;
+using MongoDB.Bson;
 using System.Collections.Generic;
 
 namespace MiniAzureDevops.ItemTable.Application.Features.Column.Queries.GetColumnsByTableId
 {
     public class GetColumnByTableIdQuery : IRequest<IReadOnlyCollection<ColumnVm>>
     {
-        public Guid TableId { get; set; }
+        public ObjectId TableId { get; set; }
     }
 }
