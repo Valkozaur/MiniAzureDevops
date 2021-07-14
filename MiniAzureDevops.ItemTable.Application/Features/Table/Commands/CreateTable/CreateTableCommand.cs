@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using MongoDB.Bson;
+using MiniAzureDevops.ItemTable.Application.Features.Column.Commands.CreateColumn;
 using System;
 
 namespace MiniAzureDevops.ItemTable.Application.Features.Table.Commands.CreateTable
@@ -7,5 +7,7 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Table.Commands.CreateTa
     public class CreateTableCommand : IRequest<Guid>
     {
         public string Name { get; set; }
+
+        public CreateColumnCommand Columns { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace MiniAzureDevops.ItemTable.Persistance.Utillities
+﻿namespace MiniAzureDevops.ItemTable.MongoItemPersistance.Utillities
 {
     public static class CollectionNameHelper
     {

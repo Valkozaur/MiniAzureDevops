@@ -6,7 +6,7 @@ namespace MiniAzureDevops.ItemTable.Domain.Common
     public class BaseEntity
     {
         [BsonId]
-        public Guid _Id { get; set; }
+        public Guid Id { get; set; }
 
         public string CreatedBy { get; set; }
 

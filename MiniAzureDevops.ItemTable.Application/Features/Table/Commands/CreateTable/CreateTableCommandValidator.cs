@@ -10,6 +10,8 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Table.Commands.CreateTa
                 .NotEmpty().WithMessage("TableName is required!")
                 .NotNull()
                 .MaximumLength(100).WithMessage("TableName must not exceed 100 characters!");
+
+            //ensure column is unuqiue.
         }        
     }
 }

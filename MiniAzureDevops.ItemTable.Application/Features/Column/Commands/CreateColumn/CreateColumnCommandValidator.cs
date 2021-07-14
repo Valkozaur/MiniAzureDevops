@@ -11,6 +11,8 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Column.Commands.CreateC
 
         public CreateColumnCommandValidator(ITableRepository tableRepository)
         {
+            this.tableRepository = tableRepository;
+
             RuleFor(c => c.Name)
                 .NotEmpty().WithMessage("Column is required!")
                 .NotNull()

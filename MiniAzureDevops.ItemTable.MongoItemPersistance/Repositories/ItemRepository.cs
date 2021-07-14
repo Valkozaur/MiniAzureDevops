@@ -2,9 +2,9 @@
 using MiniAzureDevops.ItemTable.Domain.Entities;
 using MongoDB.Driver;
 
-namespace MiniAzureDevops.ItemTable.Persistance.Repositories
+namespace MiniAzureDevops.ItemTable.MongoItemPersistance.Repositories
 {
-    public class ItemRepository : BaseRepository<Item>, IItemRepository
+    public class ItemRepository : MongoBaseRepository<Item>, IItemRepository
     {
         public ItemRepository(IMongoClient client) : base(client)
         {

@@ -5,11 +5,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.0-preview.5.21301.9">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.4" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\MiniAzureDevops.ItemTable.Application\MiniAzureDevops.ItemTable.Application.csproj" />
+    <ProjectReference Include="..\MiniAzureDevops.ItemTable.MongoItemPersistance\MiniAzureDevops.ItemTable.MongoItemPersistance.csproj" />
     <ProjectReference Include="..\MiniAzureDevops.ItemTable.Persistance\MiniAzureDevops.ItemTable.Persistance.csproj" />
   </ItemGroup>
 

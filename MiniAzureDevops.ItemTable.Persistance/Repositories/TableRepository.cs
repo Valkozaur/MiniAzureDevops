@@ -1,29 +1,29 @@
-﻿using MiniAzureDevops.ItemTable.Application.Contracts.Persistance;
+﻿using Microsoft.EntityFrameworkCore;
+using MiniAzureDevops.ItemTable.Application.Contracts.Persistance;
 using MiniAzureDevops.ItemTable.Domain.Entities;
-using MongoDB.Bson;
-using MongoDB.Driver;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace MiniAzureDevops.ItemTable.Persistance.Repositories
 {
     public class TableRepository : BaseRepository<Table>, ITableRepository
     {
-        public TableRepository(IMongoClient client) : base(client)
+        public TableRepository(MiniAzureDbContext db) : base(db)
         {
         }
 
-        public Task<bool> ColumnNameIsUnique(ObjectId tableId, string columnName)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<bool> ColumnNameIsUnique(Guid tableId, string columnName) 
+            => await this.db.Tables
+                .AsNoTracking()
+                .AnyAsync(x => x.Id == tableId && x.Columns.Any(x => x.Name == columnName));
 
-        public async Task<int> GetColumnCountByIdAsync(ObjectId tableId)
-        {
-            var table = await this.GetByIdAsync(tableId);
-
-            return table.Columns.Count;
-        }
+        public async Task<int> GetColumnCountByIdAsync(Guid tableId)
+            => await this.db.Tables
+                .AsNoTracking()
+                .Where(x => x.Id == tableId)
+                .Select(x => x.Columns.Count)
+                .FirstOrDefaultAsync();
 
         public Task<bool> IsTableIdUnique(int tableId)
         {

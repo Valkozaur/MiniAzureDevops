@@ -1,10 +1,10 @@
 ﻿using MediatR;
-using MongoDB.Bson;
+using System;
 
 namespace MiniAzureDevops.ItemTable.Application.Features.Column.Commands.DeleteColumn
 {
     public class DeleteColumnCommand : IRequest
     {
-        public ObjectId ColumnId { get; set; }
+        public Guid ColumnId { get; set; }
     }
 }

@@ -1,52 +1,47 @@
-﻿using MiniAzureDevops.ItemTable.Application.Contracts.Persistance;
+﻿using Microsoft.EntityFrameworkCore;
+using MiniAzureDevops.ItemTable.Application.Contracts.Persistance;
 using MiniAzureDevops.ItemTable.Domain.Common;
-using MongoDB.Bson;
-using MongoDB.Driver;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-using static MiniAzureDevops.ItemTable.Persistance.Utillities.CollectionNameHelper;
-using static MiniAzureDevops.ItemTable.Persistance.Utillities.Constants;
 
 namespace MiniAzureDevops.ItemTable.Persistance.Repositories
 {
     public class BaseRepository<T> : IAsyncRepository<T> where T : BaseEntity
     {
-        protected readonly IMongoClient mongoClient;
-        protected IMongoCollection<T> collection;
+        protected readonly MiniAzureDbContext db;
 
-        public BaseRepository(IMongoClient client)
+        public BaseRepository(MiniAzureDbContext db)
         {
-            this.mongoClient = client;
-            this.collection = client
-                .GetDatabase(DatabaseName)
-                .GetCollection<T>(PluralizeName(nameof(T)));
+            this.db = db;
         }
 
         public async Task<T> AddAsync(T entity)
         {
-            await this.collection.InsertOneAsync(entity);
+            await this.db.Set<T>().AddAsync(entity);
+            await this.db.SaveChangesAsync();
+
             return entity;
         }
 
-        public async Task DeleteAsync(ObjectId id)
-            => await this.collection.FindOneAndDeleteAsync<T>($"{{ _id: {id} }}");
-
-        public async Task<T> GetByIdAsync(ObjectId id)
+        public async Task DeleteAsync(Guid id)
         {
-           var result = await this.collection.FindAsync($"{{ _id: {id} }}");
-           return await result.FirstOrDefaultAsync();
+            var entity = await this.db.Set<T>().FindAsync(id);
+            db.Entry(entity).State = EntityState.Deleted;
+            await this.db.SaveChangesAsync();
         }
+
+        public Task<T> GetByIdAsync(Guid id)
+            => this.db.Set<T>().FirstOrDefaultAsync(x => x.Id == id);
 
         public async Task<IReadOnlyList<T>> ListAllAsync()
-        {
-            var result = await this.collection.FindAsync(FilterDefinition<T>.Empty);
-            return await result.ToListAsync();
-        }
+            => await this.db.Set<T>().ToArrayAsync();
 
         public async Task UpdateAsync(T entity)
         {
-            await this.collection.ReplaceOneAsync(x => x._Id == entity._Id, entity);
+            db.Entry(entity).State = EntityState.Modified;
+            await this.db.SaveChangesAsync();
         }
     }
 }

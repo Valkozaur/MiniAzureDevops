@@ -1,10 +1,10 @@
 ﻿using MediatR;
-using MongoDB.Bson;
+using System;
 
 namespace MiniAzureDevops.ItemTable.Application.Features.Table.Queries.GetColumnCount
 {
     public class GetColumnCountByIdQuery : IRequest<int>
     {
-        public ObjectId TableId { get; set; }
+        public Guid TableId { get; set; }
     }
 }

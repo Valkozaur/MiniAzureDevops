@@ -30,7 +30,7 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Table.Commands.CreateTa
 
             table = await this.tableRepository.AddAsync(table);
 
-            return table._Id;
+            return table.Id;
         }
     }
 }
