@@ -33,11 +33,11 @@ namespace MiniAzureDevops.ItemTable.Persistance
                 {
                     case EntityState.Added:
                         entry.Entity.CreatedDate = DateTime.Now;
-                        entry.Entity.CreatedBy = "";
+                        entry.Entity.CreatedBy = Guid.Empty;
                         break;
                     case EntityState.Modified:
                         entry.Entity.LastModifiedDate = DateTime.Now;
-                        entry.Entity.LastModifiedBy = "";
+                        entry.Entity.LastModifiedBy = Guid.Empty;
                         break;
                 }
             }

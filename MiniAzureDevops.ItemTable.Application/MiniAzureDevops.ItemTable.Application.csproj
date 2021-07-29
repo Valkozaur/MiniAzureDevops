@@ -15,8 +15,4 @@
     <ProjectReference Include="..\MiniAzureDevops.ItemTable.Domain\MiniAzureDevops.ItemTable.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\Story\Queries\" />
-  </ItemGroup>
-
 </Project>

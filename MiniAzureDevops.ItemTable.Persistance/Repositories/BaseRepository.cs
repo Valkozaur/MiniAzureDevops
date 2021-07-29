@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MiniAzureDevops.ItemTable.Persistance.Repositories
 {
-    public class BaseRepository<T> : IAsyncRepository<T> where T : BaseEntity
+    public class BaseRepository<T> : IAsyncRepository<T>
     {
         protected readonly MiniAzureDbContext db;
 
@@ -17,28 +17,28 @@ namespace MiniAzureDevops.ItemTable.Persistance.Repositories
             this.db = db;
         }
 
-        public async Task<T> AddAsync(T entity)
+        public async Task<BaseEntity<T>> AddAsync(BaseEntity<T> entity)
         {
-            await this.db.Set<T>().AddAsync(entity);
+            await this.db.Set<BaseEntity<T>>().AddAsync(entity);
             await this.db.SaveChangesAsync();
 
             return entity;
         }
 
-        public async Task DeleteAsync(Guid id)
+        public async Task DeleteAsync(T id)
         {
-            var entity = await this.db.Set<T>().FindAsync(id);
+            var entity = await this.db.Set<BaseEntity<T>>().FindAsync(id);
             db.Entry(entity).State = EntityState.Deleted;
             await this.db.SaveChangesAsync();
         }
 
-        public Task<T> GetByIdAsync(Guid id)
-            => this.db.Set<T>().FirstOrDefaultAsync(x => x.Id == id);
+        public Task<BaseEntity<T>> GetByIdAsync(T id)
+            => this.db.Set<BaseEntity<T>>().FirstOrDefaultAsync(x => x.Id.Equals(id));
 
-        public async Task<IReadOnlyList<T>> ListAllAsync()
-            => await this.db.Set<T>().ToArrayAsync();
+        public async Task<IReadOnlyList<BaseEntity<T>>> ListAllAsync()
+            => await this.db.Set<BaseEntity<T>>().ToArrayAsync();
 
-        public async Task UpdateAsync(T entity)
+        public async Task UpdateAsync(BaseEntity<T> entity)
         {
             db.Entry(entity).State = EntityState.Modified;
             await this.db.SaveChangesAsync();

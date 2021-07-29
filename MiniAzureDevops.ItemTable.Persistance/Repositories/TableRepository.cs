@@ -25,9 +25,9 @@ namespace MiniAzureDevops.ItemTable.Persistance.Repositories
                 .Select(x => x.Columns.Count)
                 .FirstOrDefaultAsync();
 
-        public Task<bool> IsTableIdUnique(int tableId)
+        public Task<bool> IsTableIdUnique(int storyId, Guid tableId)
         {
-            throw new NotImplementedException();
+
         }
     }
 }

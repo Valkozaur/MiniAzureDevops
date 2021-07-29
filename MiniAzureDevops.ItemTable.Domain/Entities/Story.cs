@@ -1,12 +1,11 @@
 ﻿
 using MiniAzureDevops.ItemTable.Domain.Common;
+using System;
 
 namespace MiniAzureDevops.ItemTable.Domain.Entities
 {
-    public class Story : BaseEntity
+    public class Story : BaseEntity<int>
     {
-        public int TableId { get; set; }
-
         public string Name { get; set; }
 
         public string Description { get; set; }
@@ -15,8 +14,12 @@ namespace MiniAzureDevops.ItemTable.Domain.Entities
 
         public string AssignedTo { get; set; }
 
-        public string ColumnId { get; set; }
+        public Guid ColumnId { get; set; }
 
         public Column Column { get; set; }
+
+        public Guid TableId { get; set; }
+
+        public Table Table { get; set; }
     }
 }

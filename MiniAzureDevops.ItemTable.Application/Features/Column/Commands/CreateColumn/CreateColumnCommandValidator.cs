@@ -24,6 +24,6 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Column.Commands.CreateC
         }
 
         private async Task<bool> ColumnNameMustBeUniqueInTable(CreateColumnCommand request, CancellationToken token)
-            => await this.tableRepository.ColumnNameIsUnique(request.TableId, request.Name);
+            => !await this.tableRepository.ColumnNameIsUnique(request.TableId, request.Name);
     }
 }

@@ -14,10 +14,10 @@ namespace MiniAzureDevops.ItemTable.Application
             services.AddDbContext<MiniAzureDbContext>(options =>
             options.UseSqlServer(configuration.GetConnectionString("MiniAzureItemTableSQLServerConnectionString")));
 
-            services.AddScoped(typeof(IAsyncRepository<>), typeof(BaseRepository<>));
-            services.AddScoped<ITableRepository, TableRepository>();
-            services.AddScoped<IColumnRepository, ColumnRepository >();
-            services.AddScoped<IStoryRepository, StoryRepository>();
+            services.AddTransient(typeof(IAsyncRepository<>), typeof(BaseRepository<>));
+            services.AddTransient<ITableRepository, TableRepository>();
+            services.AddTransient<IColumnRepository, ColumnRepository >();
+            services.AddTransient<IStoryRepository, StoryRepository>();
 
             return services;
         }

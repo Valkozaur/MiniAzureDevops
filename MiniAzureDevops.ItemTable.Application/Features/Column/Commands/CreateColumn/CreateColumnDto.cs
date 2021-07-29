@@ -4,7 +4,7 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Column.Commands.CreateC
 {
     public class CreateColumnDto
     {
-        public Guid ColumnId { get; set; }
+        public Guid Id { get; set; }
 
         public string Name { get; set; }
 

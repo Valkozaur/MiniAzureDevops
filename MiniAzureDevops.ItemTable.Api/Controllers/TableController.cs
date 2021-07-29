@@ -10,23 +10,17 @@ using MiniAzureDevops.ItemTable.Application.Features.Table.Queries.GetTableById;
 
 namespace MiniAzureDevops.ItemTable.Api.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class TableController : ControllerBase
+    public class TableController : BaseController
     {
-        private readonly IMediator mediator;
+        public TableController(IMediator mediator) : base(mediator) { }
 
-        public TableController(IMediator mediator)
-        {
-            this.mediator = mediator;
-        }
 
         [HttpGet(Name = "GetTable")]
-        public async Task<TableVm> GetTable(GetTableByIdQuery query)
+        public async Task<TableVm> GetTable([FromQuery]GetTableByIdQuery query)
             => await this.mediator.Send(query);
 
         [HttpPost(Name = "AddTable")]
-        public async Task<ActionResult<Guid>> Create(CreateTableCommand createTableCommand)
+        public async Task<ActionResult<Guid>> Create([FromBody]CreateTableCommand createTableCommand)
             => Ok(await this.mediator.Send(createTableCommand));
     }
 }

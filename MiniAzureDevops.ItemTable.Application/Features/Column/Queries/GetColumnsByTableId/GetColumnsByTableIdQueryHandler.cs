@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace MiniAzureDevops.ItemTable.Application.Features.Column.Queries.GetColumnsByTableId
 {
-    public class GetColumnByTableIdQueryHandler : IRequestHandler<GetColumnByTableIdQuery, IReadOnlyCollection<ColumnVm>>
+    public class GetColumnsByTableIdQueryHandler : IRequestHandler<GetColumnByTableIdQuery, IReadOnlyCollection<ColumnVm>>
     {
         private readonly IMapper mapper;
         private readonly IColumnRepository columnRepository;
 
-        public GetColumnByTableIdQueryHandler(IMapper mapper, IColumnRepository columnRepository)
+        public GetColumnsByTableIdQueryHandler(IMapper mapper, IColumnRepository columnRepository)
         {
             this.mapper = mapper;
             this.columnRepository = columnRepository;
@@ -25,4 +25,4 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Column.Queries.GetColum
             return this.mapper.Map<IReadOnlyCollection<ColumnVm>>(columns);
         }
     }
-}
+}   

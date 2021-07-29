@@ -18,12 +18,12 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Story.Commands.CreateSt
                 .NotNull()
                 .MaximumLength(50).WithMessage("Name must be less than 50 characters!");
 
-                RuleFor(x => x)
-                    .MustAsync(IsTableIdUnique)
-                    .WithErrorCode("NotTableUniqueId");
+            RuleFor(x => x)
+                .MustAsync(IsTableIdUnique)
+                .WithErrorCode("NotTableUniqueId");
         }
 
         private async Task<bool> IsTableIdUnique(CreateStoryCommand request, CancellationToken token)
-            => await this.tableRepositroy.IsTableIdUnique(request.TableId);
+            => await this.tableRepositroy.IsTableIdUnique(request.TableId, request.ColumnId);
     }
 }

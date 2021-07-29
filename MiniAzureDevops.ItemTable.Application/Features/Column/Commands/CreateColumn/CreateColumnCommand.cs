@@ -5,6 +5,8 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Column.Commands.CreateC
 {
     public class CreateColumnCommand : IRequest<CreateColumnCommandResponse>
     {
+        public Guid Id { get; set; }
+
         public string Name { get; set; }
 
         public int OrderNumber { get; set; }

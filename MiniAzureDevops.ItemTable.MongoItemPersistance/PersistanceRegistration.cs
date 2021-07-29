@@ -25,25 +25,25 @@ namespace MiniAzureDevops.ItemTable.MongoItemPersistance
 
         private static void CreateDatabase(IConfiguration configuration)
         {
-            MongoClient client = new MongoClient(configuration.GetConnectionString("MiniAzureItemTableMongoConnectionString"));
-            var databases = client.GetDatabase(configuration.GetConnectionString("DatabaseName"));
+            //MongoClient client = new MongoClient(configuration.GetConnectionString("MiniAzureItemTableMongoConnectionString"));
+            //var databases = client.GetDatabase(configuration.GetConnectionString("DatabaseName"));
 
 
-            var testTableName = "TEST";
-            var table = new Table { Name = testTableName };
-            var tablesCollection = databases.GetCollection<Table>(PluralizeName(nameof(Table)));
+            //var testTableName = "TEST";
+            //var table = new Table { Name = testTableName };
+            //var tablesCollection = databases.GetCollection<Table>(PluralizeName(nameof(Table)));
 
 
-            //If we can't get the table 
-            var getTable = tablesCollection.Find(x => x.Name == testTableName).FirstOrDefault();
-            //we Create the database with tables. 
-            if (getTable == null)
-            {
-                databases.CreateCollection(PluralizeName(nameof(Table)));
-                databases.CreateCollection(PluralizeName(nameof(Story)));
+            ////If we can't get the table 
+            //var getTable = tablesCollection.Find(x => x.Name == testTableName).FirstOrDefault();
+            ////we Create the database with tables. 
+            //if (getTable == null)
+            //{
+            //    databases.CreateCollection(PluralizeName(nameof(Table)));
+            //    databases.CreateCollection(PluralizeName(nameof(Story)));
 
-                databases.GetCollection<Table>(PluralizeName(nameof(Table))).InsertOne(table);
-            }
+            //    databases.GetCollection<Table>(PluralizeName(nameof(Table))).InsertOne(table);
+            //}
         }
     }
 }

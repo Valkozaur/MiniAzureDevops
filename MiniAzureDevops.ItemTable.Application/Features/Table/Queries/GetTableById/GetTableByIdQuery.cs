@@ -5,6 +5,6 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Table.Queries.GetTableB
 {
     public class GetTableByIdQuery : IRequest<TableVm>
     {
-        public Guid Id { get; set; }
+        public Guid TableId { get; set; }
     }
 }

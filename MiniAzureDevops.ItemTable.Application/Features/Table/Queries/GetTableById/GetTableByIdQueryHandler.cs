@@ -18,7 +18,7 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Table.Queries.GetTableB
         }
         public async Task<TableVm> Handle(GetTableByIdQuery request, CancellationToken cancellationToken)
         {
-            var table = await this.tableRepository.GetByIdAsync(request.Id);
+            var table = await this.tableRepository.GetByIdAsync(request.TableId);
             return this._mapper.Map<TableVm>(table);
         }
     }

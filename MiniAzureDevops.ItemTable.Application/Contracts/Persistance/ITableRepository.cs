@@ -10,6 +10,6 @@ namespace MiniAzureDevops.ItemTable.Application.Contracts.Persistance
 
         Task<bool> ColumnNameIsUnique(Guid tableId, string columnName);
 
-        Task<bool> IsTableIdUnique(int tableId);
+        Task<bool> IsTableIdUnique(int tableId, Guid columnId);
     }
 }

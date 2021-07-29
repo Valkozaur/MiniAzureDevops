@@ -9,7 +9,7 @@ namespace MiniAzureDevops.ItemTable.Persistance.ModelConfigurations
         public void Configure(EntityTypeBuilder<Column> builder)
         {
             builder
-                .HasKey(x => x.Name);
+                .HasKey(x => x.Id);
 
             builder
                 .Property(x => x.Name)
