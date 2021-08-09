@@ -21,8 +21,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiniAzureDevops.ItemTable.P
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiniAzureDevops.ItemTable.Api", "MiniAzureDevops.ItemTable.Api\MiniAzureDevops.ItemTable.Api.csproj", "{82294D7C-F821-4D75-84AC-0AE2FB1D5B6D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiniAzureDevops.ItemTable.MongoItemPersistance", "MiniAzureDevops.ItemTable.MongoItemPersistance\MiniAzureDevops.ItemTable.MongoItemPersistance.csproj", "{DCB4BE28-CE99-422C-B197-C092273979F8}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,10 +43,6 @@ Global
 		{82294D7C-F821-4D75-84AC-0AE2FB1D5B6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82294D7C-F821-4D75-84AC-0AE2FB1D5B6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82294D7C-F821-4D75-84AC-0AE2FB1D5B6D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DCB4BE28-CE99-422C-B197-C092273979F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DCB4BE28-CE99-422C-B197-C092273979F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DCB4BE28-CE99-422C-B197-C092273979F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DCB4BE28-CE99-422C-B197-C092273979F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -61,7 +55,6 @@ Global
 		{9A2C90AA-4FA1-4193-A04F-F8420A60D194} = {85353622-32A5-4009-B191-FF93CBB4B5A8}
 		{255BC812-C56A-46B2-904D-18952678B3F8} = {9016FF43-5F03-411F-B027-0A4F4F17E7BC}
 		{82294D7C-F821-4D75-84AC-0AE2FB1D5B6D} = {3A741F09-DB56-467D-925E-4577243044E0}
-		{DCB4BE28-CE99-422C-B197-C092273979F8} = {9016FF43-5F03-411F-B027-0A4F4F17E7BC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AC3F7267-85C1-4E3D-8334-61512E043DC2}

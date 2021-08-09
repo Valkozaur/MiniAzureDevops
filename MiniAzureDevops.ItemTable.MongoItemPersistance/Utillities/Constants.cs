@@ -8,6 +8,6 @@
 
         public static string TableCollectionName = "Tables";
 
-        public static string StoryCollcetionName = "Stories";
+        public static string ItemsCollectionName = "Items";
     }
 }

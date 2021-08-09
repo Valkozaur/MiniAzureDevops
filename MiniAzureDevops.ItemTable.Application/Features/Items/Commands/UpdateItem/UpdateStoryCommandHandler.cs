@@ -1,23 +1,24 @@
 ﻿using AutoMapper;
 using MediatR;
 using MiniAzureDevops.ItemTable.Application.Contracts.Persistance;
+using MiniAzureDevops.ItemTable.Domain.Entities;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace MiniAzureDevops.ItemTable.Application.Features.Story.Commands.UpdateStory
 {
-    public class UpdateStoryCommandHandler : IRequestHandler<UpdateStoryCommand, Unit>
+    public class UpdateStoryCommandHandler : IRequestHandler<UpdateItemCommand, Unit>
     {
         private readonly IMapper mapper;
-        private readonly IStoryRepository storyRepository;
+        private readonly IItemRepository itemRepository;
 
-        public UpdateStoryCommandHandler(IMapper mapper, IStoryRepository storyRepository)
+        public UpdateStoryCommandHandler(IMapper mapper, IItemRepository itemRepository)
         {
             this.mapper = mapper;
-            this.storyRepository = storyRepository;
+            this.itemRepository = itemRepository;
         }
 
-        public async Task<Unit> Handle(UpdateStoryCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(UpdateItemCommand request, CancellationToken cancellationToken)
         {
             var validator = new UpdateStoryCommandValidator();
             var validatorResult = validator.Validate(request);
@@ -27,11 +28,11 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Story.Commands.UpdateSt
                 throw new Exceptions.ValidationException(validatorResult);
             }
 
-            var storyToUpdate = await this.storyRepository.GetByIdAsync(request.Id);
+            var item = await this.itemRepository.GetByIdAsync(request.Id, request.ProjectId);
 
-            this.mapper.Map(request, storyToUpdate, typeof(UpdateStoryCommand), typeof(Domain.Entities.Story));
+            this.mapper.Map(request, item, typeof(UpdateItemCommand), typeof(Item));
 
-            await this.storyRepository.UpdateAsync(storyToUpdate);
+            this.itemRepository.Update(item);
 
             return Unit.Value;
         }

@@ -1,20 +1,24 @@
 ﻿using MiniAzureDevops.ItemTable.Domain.Common;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace MiniAzureDevops.ItemTable.Application.Contracts.Persistance
 {
-    public interface IAsyncRepository<T>
+    public interface IAsyncRepository<TEntity>  : IDisposable
+        where TEntity : class
     {
-        Task<BaseEntity<T>> GetByIdAsync(T id);
+        IQueryable<TEntity> All();
 
-        Task<IReadOnlyList<BaseEntity<T>>> ListAllAsync();
+        IQueryable<TEntity> AllAsNoTracking();
 
-        Task<BaseEntity<T>> AddAsync(BaseEntity<T> entity);
+        Task AddAsync(TEntity entity);
 
-        Task UpdateAsync(BaseEntity<T> entity);
+        void Update(TEntity entity);
 
-        Task DeleteAsync(T id);
+        void Delete(TEntity entity);
+
+        Task<int> SaveChangesAsync();
     }
 }

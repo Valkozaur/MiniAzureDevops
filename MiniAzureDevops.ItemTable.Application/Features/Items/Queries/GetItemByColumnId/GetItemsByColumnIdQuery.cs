@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 namespace MiniAzureDevops.ItemTable.Application.Features.Story.Queries.GetStoriesByColumnId
 {
-    public class GetStoriesByColumnIdQuery : IRequest<IReadOnlyCollection<StoryVm>>
+    public class GetItemsByColumnIdQuery : IRequest<IReadOnlyCollection<ItemVm>>
     {
-        public Guid ColumnId { get; set; }
+        public Guid ColumnId { get; set; } 
     }
 }

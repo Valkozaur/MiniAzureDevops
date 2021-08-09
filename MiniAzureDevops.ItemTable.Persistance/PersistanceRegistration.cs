@@ -17,7 +17,6 @@ namespace MiniAzureDevops.ItemTable.Application
             services.AddTransient(typeof(IAsyncRepository<>), typeof(BaseRepository<>));
             services.AddTransient<ITableRepository, TableRepository>();
             services.AddTransient<IColumnRepository, ColumnRepository >();
-            services.AddTransient<IStoryRepository, StoryRepository>();
 
             return services;
         }

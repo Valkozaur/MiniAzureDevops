@@ -11,21 +11,21 @@ namespace MiniAzureDevops.ItemTable.Persistance.Repositories
     public class ColumnRepository : BaseRepository<Column>, IColumnRepository
     {
 
-        public ColumnRepository(MiniAzureDbContext db) : base(db)
-        {
-        }
+        public ColumnRepository(MiniAzureDbContext context) : base(context) {}
+
+        public Task<Column> GetByIdAsync(Guid id)
+            => this.All()
+                .FirstOrDefaultAsync(c => c.Id == id);
 
         public async Task<IEnumerable<Column>> GetColumnsByTableIdAsync(Guid tableId)
-            => await this.db.Columns
-                .AsNoTracking()
-                .Where(x => x.TableId == tableId)
-                .ToArrayAsync();
+            => await this.AllAsNoTracking()
+                        .Where(x => x.TableId == tableId)
+                        .ToArrayAsync();
 
-        public async Task<bool> HasColumnStories(Guid columnId) 
-            => await this.db.Columns
-                .AsNoTracking()
-                .Where(x => x.Id == columnId)
-                .Select(x => x.Stories.Any())
-                .FirstOrDefaultAsync();
+        public async Task<bool> HasColumnItems(Guid columnId)
+            => await this.AllAsNoTracking()
+                        .Where(x => x.Id == columnId)
+                        .Select(x => x.Items.Any())
+                        .FirstOrDefaultAsync();
     }
 }

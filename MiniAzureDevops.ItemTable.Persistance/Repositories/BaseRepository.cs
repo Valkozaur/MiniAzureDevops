@@ -3,45 +3,59 @@ using MiniAzureDevops.ItemTable.Application.Contracts.Persistance;
 using MiniAzureDevops.ItemTable.Domain.Common;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 
 namespace MiniAzureDevops.ItemTable.Persistance.Repositories
 {
-    public class BaseRepository<T> : IAsyncRepository<T>
+    public class BaseRepository<TEntity> : IAsyncRepository<TEntity>
+        where TEntity : class
     {
-        protected readonly MiniAzureDbContext db;
-
-        public BaseRepository(MiniAzureDbContext db)
+        public BaseRepository(MiniAzureDbContext context)
         {
-            this.db = db;
+            this.Context = context ?? throw new ArgumentNullException(nameof(context));
+            this.DbSet = this.Context.Set<TEntity>();
         }
 
-        public async Task<BaseEntity<T>> AddAsync(BaseEntity<T> entity)
-        {
-            await this.db.Set<BaseEntity<T>>().AddAsync(entity);
-            await this.db.SaveChangesAsync();
+        protected DbSet<TEntity> DbSet { get; set; }
 
-            return entity;
+        protected MiniAzureDbContext Context { get; set; }
+
+        public virtual IQueryable<TEntity> All() => this.DbSet;
+
+        public virtual IQueryable<TEntity> AllAsNoTracking() => this.DbSet.AsNoTracking();
+
+        public virtual Task AddAsync(TEntity entity) => this.DbSet.AddAsync(entity).AsTask();
+
+        public virtual void Update(TEntity entity)
+        {
+            var entry = this.Context.Entry(entity);
+            if (entry.State == EntityState.Detached)
+            {
+                this.DbSet.Attach(entity);
+            }
+
+            entry.State = EntityState.Modified;
         }
 
-        public async Task DeleteAsync(T id)
+        public virtual void Delete(TEntity entity) => this.DbSet.Remove(entity);
+
+        public Task<int> SaveChangesAsync() => this.Context.SaveChangesAsync();
+
+        public void Dispose()
         {
-            var entity = await this.db.Set<BaseEntity<T>>().FindAsync(id);
-            db.Entry(entity).State = EntityState.Deleted;
-            await this.db.SaveChangesAsync();
+            this.Dispose(true);
+            GC.SuppressFinalize(this);
         }
 
-        public Task<BaseEntity<T>> GetByIdAsync(T id)
-            => this.db.Set<BaseEntity<T>>().FirstOrDefaultAsync(x => x.Id.Equals(id));
-
-        public async Task<IReadOnlyList<BaseEntity<T>>> ListAllAsync()
-            => await this.db.Set<BaseEntity<T>>().ToArrayAsync();
-
-        public async Task UpdateAsync(BaseEntity<T> entity)
+        protected virtual void Dispose(bool disposing)
         {
-            db.Entry(entity).State = EntityState.Modified;
-            await this.db.SaveChangesAsync();
+            if (disposing)
+            {
+                this.Context?.Dispose();
+            }
         }
     }
 }
+

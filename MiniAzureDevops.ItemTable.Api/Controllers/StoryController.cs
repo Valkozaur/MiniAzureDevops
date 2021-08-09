@@ -13,11 +13,11 @@ namespace MiniAzureDevops.ItemTable.Api.Controllers
 
 
         [HttpGet(Name = "Get Stories By Column")]
-        public async Task<IReadOnlyCollection<StoryVm>> GetStoriesByColumn([FromQuery]GetStoriesByColumnIdQuery request)
+        public async Task<IReadOnlyCollection<ItemVm>> GetStoriesByColumn([FromQuery]GetItemsByColumnIdQuery request)
             => await this.mediator.Send(request);
 
         [HttpPost(Name = "Create Story")]
-        public async Task<CreateStoryCommandResponse> CreateStory([FromBody] CreateStoryCommand command)
+        public async Task<CreateItemCommandResponse> CreateStory([FromBody] CreateItemCommand command)
             => await this.mediator.Send(command);
     }
 }

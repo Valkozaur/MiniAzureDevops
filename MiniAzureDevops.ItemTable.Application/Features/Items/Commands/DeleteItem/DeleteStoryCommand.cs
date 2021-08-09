@@ -5,6 +5,8 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Story.Commands.DeleteSt
 {
     public class DeleteStoryCommand : IRequest
     {
-        public Guid StoryId { get; set; }
+        public int ItemId { get; set; }
+
+        public Guid ProjectId { get; set; }
     }
 }

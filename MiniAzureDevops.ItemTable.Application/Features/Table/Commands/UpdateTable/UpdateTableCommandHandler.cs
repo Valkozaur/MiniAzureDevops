@@ -29,7 +29,7 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Table.Commands.UpdateTa
 
             this.mapper.Map(request, tableToUpdate, typeof(UpdateTableCommand), typeof(Domain.Entities.Table));
 
-            await this.tableRepository.UpdateAsync(tableToUpdate);
+            this.tableRepository.Update(tableToUpdate);
 
             return Unit.Value;
         }

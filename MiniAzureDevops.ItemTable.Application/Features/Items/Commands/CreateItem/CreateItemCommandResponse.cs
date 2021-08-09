@@ -2,8 +2,8 @@
 
 namespace MiniAzureDevops.ItemTable.Application.Features.Story.Commands.CreateStory
 {
-    public class CreateStoryCommandResponse : BaseResponse
+    public class CreateItemCommandResponse : BaseResponse
     {
-        public StoryDto Story { get; set; }
+        public ItemDto Item { get; set; }
     }
 }

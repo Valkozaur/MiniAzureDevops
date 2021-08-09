@@ -16,7 +16,8 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Table.Commands.DeleteTa
 
         public async Task<Unit> Handle(DeleteTableCommand request, CancellationToken cancellationToken)
         {
-            await this.tableRepository.DeleteAsync(request.TableId);
+            var table = await this.tableRepository.GetByIdAsync(request.TableId);
+            this.tableRepository.Delete(table);
             
             return Unit.Value;
         }

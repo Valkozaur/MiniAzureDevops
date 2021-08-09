@@ -4,16 +4,16 @@ using MiniAzureDevops.ItemTable.Domain.Entities;
 
 namespace MiniAzureDevops.ItemTable.Persistance.ModelConfigurations
 {
-    public class StoryItemConfiguration : IEntityTypeConfiguration<Story>
+    public class ProjectModelConfiguration : IEntityTypeConfiguration<Project>
     {
-        public void Configure(EntityTypeBuilder<Story> builder)
+        public void Configure(EntityTypeBuilder<Project> builder)
         {
             builder
-                .HasKey(story => story.Id);
+                .HasKey(x => x.Id);
 
             builder
-                .Property(story => story.Name)
-                .HasMaxLength(50)
+                .Property(x => x.Name)
+                .HasMaxLength(100)
                 .IsRequired();
         }
     }

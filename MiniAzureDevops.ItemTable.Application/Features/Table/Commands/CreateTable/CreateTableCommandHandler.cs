@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MiniAzureDevops.ItemTable.Application.Features.Table.Commands.CreateTable
 {
-    public class CreateTableCommandHandler : IRequestHandler<CreateTableCommand, Guid>
+    public class CreateTableCommandHandler : IRequestHandler<CreateTableCommand, Unit>
     {
         private readonly IMapper mapper;
         private readonly ITableRepository tableRepository;
@@ -18,7 +18,7 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Table.Commands.CreateTa
             this.tableRepository = tableRepository;
         }
 
-        public async Task<Guid> Handle(CreateTableCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(CreateTableCommand request, CancellationToken cancellationToken)
         {
             var table = this.mapper.Map<Domain.Entities.Table>(request);
 
@@ -28,9 +28,9 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Table.Commands.CreateTa
             if (!validatorResult.IsValid)
                 throw new Exceptions.ValidationException(validatorResult);
 
-            table = await this.tableRepository.AddAsync(table);
+            await this.tableRepository.AddAsync(table);
 
-            return table.Id;
+            return Unit.Value;
         }
     }
 }

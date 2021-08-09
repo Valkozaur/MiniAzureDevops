@@ -2,8 +2,6 @@
 
 using MiniAzureDevops.ItemTable.Application.Features.Column.Commands.CreateColumn;
 using MiniAzureDevops.ItemTable.Application.Features.Column.Queries.GetColumnsByTableId;
-using MiniAzureDevops.ItemTable.Application.Features.Story.Commands.CreateStory;
-using MiniAzureDevops.ItemTable.Application.Features.Story.Queries.GetStoriesByColumnId;
 using MiniAzureDevops.ItemTable.Application.Features.Table.Commands.CreateTable;
 using MiniAzureDevops.ItemTable.Application.Features.Table.Queries.GetTableById;
 using MiniAzureDevops.ItemTable.Domain.Entities;
@@ -20,11 +18,6 @@ namespace MiniAzureDevops.ItemTable.Application.Profiles
             CreateMap<Column, CreateColumnDto>();
             CreateMap<CreateColumnCommand, Column>();
             CreateMap<Column, ColumnVm>();
-
-            CreateMap<Story, StoryDto>();
-            CreateMap<Story, StoryVm>();
-
-            CreateMap<CreateStoryCommand, Story>();
         }
     }
 }

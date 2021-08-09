@@ -13,7 +13,7 @@ namespace MiniAzureDevops.ItemTable.Persistance.ModelConfigurations
 
             builder
                 .Property(x => x.Name)
-                .HasMaxLength(50)
+                .HasMaxLength(100)
                 .IsRequired();
         }
     }

@@ -1,15 +1,13 @@
 ﻿using FluentValidation;
 using MiniAzureDevops.ItemTable.Application.Contracts.Persistance;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace MiniAzureDevops.ItemTable.Application.Features.Story.Commands.CreateStory
 {
-    public class CreateStoryCommandValidator : AbstractValidator<CreateStoryCommand>
+    public class CreateItemCommandValidator : AbstractValidator<CreateItemCommand>
     {
         private readonly ITableRepository tableRepositroy;
 
-        public CreateStoryCommandValidator(ITableRepository tableRepositroy)
+        public CreateItemCommandValidator(ITableRepository tableRepositroy)
         {
             this.tableRepositroy = tableRepositroy;
 
@@ -17,13 +15,7 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Story.Commands.CreateSt
                 .NotEmpty().WithMessage("Name must be defined!")
                 .NotNull()
                 .MaximumLength(50).WithMessage("Name must be less than 50 characters!");
-
-            RuleFor(x => x)
-                .MustAsync(IsTableIdUnique)
-                .WithErrorCode("NotTableUniqueId");
         }
-
-        private async Task<bool> IsTableIdUnique(CreateStoryCommand request, CancellationToken token)
-            => await this.tableRepositroy.IsTableIdUnique(request.TableId, request.ColumnId);
     }
 }
+

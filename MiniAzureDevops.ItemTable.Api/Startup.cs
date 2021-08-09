@@ -5,7 +5,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using MiniAzureDevops.ItemTable.Application;
-using MiniAzureDevops.ItemTable.MongoItemPersistance;
 
 namespace MiniAzureDevops.ItemTable.Api
 {
@@ -31,7 +30,6 @@ namespace MiniAzureDevops.ItemTable.Api
 
             services.AddApplicationServices();
             services.AddSQLPersistanceServices(this.Configuration);
-            services.UseMongoDb(this.Configuration);
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

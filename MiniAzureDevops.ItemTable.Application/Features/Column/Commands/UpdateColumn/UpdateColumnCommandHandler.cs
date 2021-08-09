@@ -34,7 +34,7 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Column.Commands.UpdateC
 
             this.mapper.Map(request, columnToUpdate, typeof(UpdateColumnCommand), typeof(Domain.Entities.Column));
 
-            await this.columnRepository.UpdateAsync(columnToUpdate);
+            this.columnRepository.Update(columnToUpdate);
 
             return Unit.Value;
         }

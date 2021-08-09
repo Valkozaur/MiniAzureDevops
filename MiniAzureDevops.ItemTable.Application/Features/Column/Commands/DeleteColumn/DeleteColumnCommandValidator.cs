@@ -20,6 +20,6 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Column.Commands.DeleteC
         }
 
         private async Task<bool> ColumnHasNoChildren(DeleteColumnCommand request, CancellationToken token)
-            => !(await this.columnRepository.HasColumnStories(request.ColumnId));
+            => !(await this.columnRepository.HasColumnItems(request.ColumnId));
     }
 }

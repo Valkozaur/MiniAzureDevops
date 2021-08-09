@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using MiniAzureDevops.ItemTable.Application.Contracts.Persistance;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -16,7 +17,7 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Column.Commands.DeleteC
 
         public async Task<Unit> Handle(DeleteColumnCommand request, CancellationToken cancellationToken)
         {
-            var column = this.columnRepository.GetByIdAsync(request.ColumnId);
+            var column = await this.columnRepository.GetByIdAsync(request.ColumnId);
             if (column == null)
                 throw new Exceptions.NotFoundException(nameof(Domain.Entities.Column), request.ColumnId);
 
@@ -26,7 +27,7 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Column.Commands.DeleteC
             if (!validationResult.IsValid)
                 throw new Exceptions.ValidationException(validationResult);
 
-            await this.columnRepository.DeleteAsync(request.ColumnId);
+            this.columnRepository.Delete(column);
 
             return Unit.Value;
         }

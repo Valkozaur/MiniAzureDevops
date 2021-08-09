@@ -10,7 +10,7 @@ using MiniAzureDevops.ItemTable.Persistance;
 namespace MiniAzureDevops.ItemTable.Persistance.Migrations
 {
     [DbContext(typeof(MiniAzureDbContext))]
-    [Migration("20210719173016_Init")]
+    [Migration("20210809052326_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -54,14 +54,17 @@ namespace MiniAzureDevops.ItemTable.Persistance.Migrations
                     b.ToTable("Columns");
                 });
 
-            modelBuilder.Entity("MiniAzureDevops.ItemTable.Domain.Entities.Story", b =>
+            modelBuilder.Entity("MiniAzureDevops.ItemTable.Domain.Entities.Item", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1)
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("AssignedTo")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<Guid>("ProjectId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("ColumnId")
                         .HasColumnType("uniqueidentifier");
@@ -75,6 +78,9 @@ namespace MiniAzureDevops.ItemTable.Persistance.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("ItemStatus")
+                        .HasColumnType("int");
+
                     b.Property<Guid>("LastModifiedBy")
                         .HasColumnType("uniqueidentifier");
 
@@ -83,20 +89,60 @@ namespace MiniAzureDevops.ItemTable.Persistance.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
-                    b.Property<int>("OrderNumber")
+                    b.Property<int?>("ParentId")
                         .HasColumnType("int");
 
-                    b.Property<int>("TableId")
+                    b.Property<int?>("ParentId1")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.Property<Guid?>("ParentProjectId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id", "ProjectId");
 
                     b.HasIndex("ColumnId");
 
-                    b.ToTable("Story");
+                    b.HasIndex("Name");
+
+                    b.HasIndex("ProjectId");
+
+                    b.HasIndex("ParentId1", "ParentProjectId");
+
+                    b.ToTable("Items");
+                });
+
+            modelBuilder.Entity("MiniAzureDevops.ItemTable.Domain.Entities.Project", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("LastModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Projects");
                 });
 
             modelBuilder.Entity("MiniAzureDevops.ItemTable.Domain.Entities.Table", b =>
@@ -119,10 +165,15 @@ namespace MiniAzureDevops.ItemTable.Persistance.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<Guid>("ProjectId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ProjectId");
 
                     b.ToTable("Tables");
                 });
@@ -138,20 +189,58 @@ namespace MiniAzureDevops.ItemTable.Persistance.Migrations
                     b.Navigation("Table");
                 });
 
-            modelBuilder.Entity("MiniAzureDevops.ItemTable.Domain.Entities.Story", b =>
+            modelBuilder.Entity("MiniAzureDevops.ItemTable.Domain.Entities.Item", b =>
                 {
                     b.HasOne("MiniAzureDevops.ItemTable.Domain.Entities.Column", "Column")
-                        .WithMany("Stories")
+                        .WithMany("Items")
                         .HasForeignKey("ColumnId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("MiniAzureDevops.ItemTable.Domain.Entities.Project", "Project")
+                        .WithMany("Items")
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("MiniAzureDevops.ItemTable.Domain.Entities.Item", "Parent")
+                        .WithMany("Children")
+                        .HasForeignKey("ParentId1", "ParentProjectId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("Column");
+
+                    b.Navigation("Parent");
+
+                    b.Navigation("Project");
+                });
+
+            modelBuilder.Entity("MiniAzureDevops.ItemTable.Domain.Entities.Table", b =>
+                {
+                    b.HasOne("MiniAzureDevops.ItemTable.Domain.Entities.Project", "Project")
+                        .WithMany("Tables")
+                        .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Column");
+                    b.Navigation("Project");
                 });
 
             modelBuilder.Entity("MiniAzureDevops.ItemTable.Domain.Entities.Column", b =>
                 {
-                    b.Navigation("Stories");
+                    b.Navigation("Items");
+                });
+
+            modelBuilder.Entity("MiniAzureDevops.ItemTable.Domain.Entities.Item", b =>
+                {
+                    b.Navigation("Children");
+                });
+
+            modelBuilder.Entity("MiniAzureDevops.ItemTable.Domain.Entities.Project", b =>
+                {
+                    b.Navigation("Items");
+
+                    b.Navigation("Tables");
                 });
 
             modelBuilder.Entity("MiniAzureDevops.ItemTable.Domain.Entities.Table", b =>

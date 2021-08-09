@@ -5,19 +5,19 @@ using System.Threading.Tasks;
 
 namespace MiniAzureDevops.ItemTable.Application.Features.Story.Commands.DeleteStory
 {
-    public class DeleteStoryCommandHandler : IRequestHandler<DeleteStoryCommand, Unit>
+    public class DeleteItemCommandHandler : IRequestHandler<DeleteStoryCommand, Unit>
     {
-        private readonly IStoryRepository storyRepository;
+        private readonly IItemRepository itemRepository;
 
-        public DeleteStoryCommandHandler(IStoryRepository storyRepository)
+        public DeleteItemCommandHandler(IItemRepository storyRepository)
         {
-            this.storyRepository = storyRepository;
+            this.itemRepository = storyRepository;
         }
 
         public async Task<Unit> Handle(DeleteStoryCommand request, CancellationToken cancellationToken)
         {
-            await this.storyRepository.DeleteAsync(request.StoryId);
-
+            var item = await this.itemRepository.GetByIdAsync(request.ItemId, request.ProjectId);
+            this.itemRepository.Delete(item);
             return Unit.Value;
         }
     }

@@ -34,7 +34,7 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Column.Commands.CreateC
             if (response.Success)
             {
                 var column = new Domain.Entities.Column() { Name = request.Name, TableId = request.TableId };
-                column = await this.columnRepository.AddAsync(column);
+                await this.columnRepository.AddAsync(column);
                 response.Column = this.mapper.Map<CreateColumnDto>(column);
             }
 

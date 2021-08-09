@@ -2,7 +2,7 @@
 
 namespace MiniAzureDevops.ItemTable.Application.Features.Story.Commands.UpdateStory
 {
-    public class UpdateStoryCommandValidator : AbstractValidator<UpdateStoryCommand>
+    public class UpdateStoryCommandValidator : AbstractValidator<UpdateItemCommand>
     {
         public UpdateStoryCommandValidator()
         {

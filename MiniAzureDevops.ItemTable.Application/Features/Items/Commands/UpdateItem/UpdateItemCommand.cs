@@ -3,9 +3,9 @@ using System;
 
 namespace MiniAzureDevops.ItemTable.Application.Features.Story.Commands.UpdateStory
 {
-    public class UpdateStoryCommand : IRequest
+    public class UpdateItemCommand : IRequest<Unit>
     {
-        public Guid Id { get;set; }
+        public int Id { get;set; }
 
         public string Name { get; set; }
 
@@ -16,5 +16,7 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Story.Commands.UpdateSt
         public string AssignedTo { get; set; }
 
         public string ColumnId { get; set; }
+
+        public Guid ProjectId { get; set; }
     }
 }

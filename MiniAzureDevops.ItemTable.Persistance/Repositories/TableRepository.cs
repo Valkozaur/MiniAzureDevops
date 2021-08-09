@@ -9,25 +9,19 @@ namespace MiniAzureDevops.ItemTable.Persistance.Repositories
 {
     public class TableRepository : BaseRepository<Table>, ITableRepository
     {
-        public TableRepository(MiniAzureDbContext db) : base(db)
-        {
-        }
+        public TableRepository(MiniAzureDbContext context) : base(context) {}
 
-        public async Task<bool> ColumnNameIsUnique(Guid tableId, string columnName) 
-            => await this.db.Tables
-                .AsNoTracking()
-                .AnyAsync(x => x.Id == tableId && x.Columns.Any(x => x.Name == columnName));
+        public Task<Table> GetByIdAsync(Guid tableId)
+            => this.All().FirstOrDefaultAsync(t => t.Id == tableId);
+
+        public async Task<bool> ColumnNameIsUnique(Guid tableId, string columnName)
+            => await this.AllAsNoTracking()
+                        .AnyAsync(c => c.Name == columnName);
 
         public async Task<int> GetColumnCountByIdAsync(Guid tableId)
-            => await this.db.Tables
-                .AsNoTracking()
-                .Where(x => x.Id == tableId)
-                .Select(x => x.Columns.Count)
-                .FirstOrDefaultAsync();
-
-        public Task<bool> IsTableIdUnique(int storyId, Guid tableId)
-        {
-
-        }
+            => await this.AllAsNoTracking()
+                        .Where(t => t.Id == tableId)
+                        .Select(t => t.Columns.Count)
+                        .FirstOrDefaultAsync(); 
     }
 }
