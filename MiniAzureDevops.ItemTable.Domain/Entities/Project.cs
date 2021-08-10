@@ -13,3 +13,4 @@ namespace MiniAzureDevops.ItemTable.Domain.Entities
         public ICollection<Item> Items { get; set; } = new HashSet<Item>();
     }
 }
+    

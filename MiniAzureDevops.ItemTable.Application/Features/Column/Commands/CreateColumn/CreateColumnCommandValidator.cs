@@ -16,7 +16,7 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Column.Commands.CreateC
             RuleFor(c => c.Name)
                 .NotEmpty().WithMessage("Column is required!")
                 .NotNull()
-                .MaximumLength(50).WithMessage("Column must not exceed 50 characters!");
+                .MaximumLength(50).WithMessage("Column name must not exceed 50 characters!");
 
             RuleFor(e => e)
                 .MustAsync(ColumnNameMustBeUniqueInTable)
