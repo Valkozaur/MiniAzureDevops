@@ -15,8 +15,10 @@ namespace MiniAzureDevops.ItemTable.Application
             options.UseSqlServer(configuration.GetConnectionString("MiniAzureItemTableSQLServerConnectionString")));
 
             services.AddTransient(typeof(IAsyncRepository<>), typeof(BaseRepository<>));
+            services.AddTransient<IProjectRepository, ProjectRepository>();
             services.AddTransient<ITableRepository, TableRepository>();
             services.AddTransient<IColumnRepository, ColumnRepository >();
+            services.AddTransient<IItemRepository, ItemRepository>();
 
             return services;
         }

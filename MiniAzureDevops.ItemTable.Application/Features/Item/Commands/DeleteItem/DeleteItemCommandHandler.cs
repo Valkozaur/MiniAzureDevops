@@ -18,6 +18,7 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Story.Commands.DeleteSt
         {
             var item = await this.itemRepository.GetByIdAsync(request.ItemId, request.ProjectId);
             this.itemRepository.Delete(item);
+            await this.itemRepository.SaveChangesAsync();
             return Unit.Value;
         }
     }
