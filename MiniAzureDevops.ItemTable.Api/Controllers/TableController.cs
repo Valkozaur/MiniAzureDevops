@@ -1,11 +1,8 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 using MediatR;
-using System;
 
 using MiniAzureDevops.ItemTable.Application.Features.Table.Commands.CreateTable;
-using MiniAzureDevops.ItemTable.Application.Features.Table.Commands.UpdateTable;
 using MiniAzureDevops.ItemTable.Application.Features.Table.Queries.GetTableById;
 
 namespace MiniAzureDevops.ItemTable.Api.Controllers
