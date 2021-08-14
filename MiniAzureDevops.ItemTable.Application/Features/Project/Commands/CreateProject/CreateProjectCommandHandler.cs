@@ -4,7 +4,7 @@ using MiniAzureDevops.ItemTable.Application.Contracts.Persistance;
 
 namespace MiniAzureDevops.ItemTable.Application.Features.Project.Commands.CreateProject
 {
-    public class CreateProjectCommandHandler : IRequestHandler<CreateProjectCommand, CreateProjectCommandResponse>
+    public class CreateProjectCommandHandler : IRequestHandler<CreateProjectCommand, CreateProjectDto>
     {
         private readonly IMapper mapper;
         private readonly IProjectRepository projectRepository;
@@ -15,19 +15,12 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Project.Commands.Create
             this.projectRepository = projectRepository;
         }
 
-        public async Task<CreateProjectCommandResponse> Handle(CreateProjectCommand request, CancellationToken cancellationToken)
+        public async Task<CreateProjectDto> Handle(CreateProjectCommand request, CancellationToken cancellationToken)
         {
-            var response = new CreateProjectCommandResponse();
-            
-            if (response.Success)
-            {
-                var project = new Domain.Entities.Project() { Name = request.Name };
-                await this.projectRepository.AddAsync(project);
-                await this.projectRepository.SaveChangesAsync();
-                response.Project = this.mapper.Map<ProjectDto>(project);
-            }
-
-            return response;
+            var project = new Domain.Entities.Project() { Name = request.Name };
+            await this.projectRepository.AddAsync(project);
+            await this.projectRepository.SaveChangesAsync();
+            return this.mapper.Map<CreateProjectDto>(project);
         }
     }
 }

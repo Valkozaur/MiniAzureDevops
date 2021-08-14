@@ -3,7 +3,7 @@ using MiniAzureDevops.ItemTable.Domain.Entities.Enumerations;
 
 namespace MiniAzureDevops.ItemTable.Application.Features.Story.Commands.CreateStory
 {
-    public class CreateItemCommand : IRequest<CreateItemCommandResponse>
+    public class CreateItemCommand : IRequest<CreateItemDto>
     {
         public string Name { get; set; }
 

@@ -2,11 +2,10 @@
 using MediatR;
 using MiniAzureDevops.ItemTable.Application.Contracts.Persistance;
 using MiniAzureDevops.ItemTable.Application.Exceptions;
-using MiniAzureDevops.ItemTable.Application.Features.Project.Dtos;
 
 namespace MiniAzureDevops.ItemTable.Application.Features.Project.Queries.GetProjectById
 {
-    public class GetProjectByIdQueryHandler : IRequestHandler<GetProjectByIdQuery, ProjectDto>
+    public class GetProjectByIdQueryHandler : IRequestHandler<GetProjectByIdQuery, GetProjectByIdDto>
     {
         private readonly IMapper mapper;
         private readonly IProjectRepository projectRepository;
@@ -17,14 +16,14 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Project.Queries.GetProj
             this.projectRepository = projectRepository;
         }
 
-        public async Task<ProjectDto> Handle(GetProjectByIdQuery request, CancellationToken cancellationToken)
+        public async Task<GetProjectByIdDto> Handle(GetProjectByIdQuery request, CancellationToken cancellationToken)
         {
             var project = await this.projectRepository.GetProjectById(request.ProjectId);
 
             if (project == null)
                 throw new NotFoundException("Project", request.ProjectId);
 
-            return this.mapper.Map<ProjectDto>(project);
+            return this.mapper.Map<GetProjectByIdDto>(project);
 
         }
     }

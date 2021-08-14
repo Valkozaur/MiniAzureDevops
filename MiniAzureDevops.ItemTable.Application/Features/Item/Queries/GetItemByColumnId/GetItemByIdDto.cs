@@ -1,6 +1,6 @@
 ﻿namespace MiniAzureDevops.ItemTable.Application.Features.Story.Queries.GetStoriesByColumnId
 {
-    public class ItemVm
+    public class GetItemByIdm
     {
         public Guid Id { get; set; }
 

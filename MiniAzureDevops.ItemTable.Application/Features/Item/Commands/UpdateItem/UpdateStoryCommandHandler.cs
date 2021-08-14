@@ -20,7 +20,7 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Story.Commands.UpdateSt
         {
             var item = await this.itemRepository.GetByIdAsync(request.Id, request.ProjectId);
 
-            this.mapper.Map(request, item, typeof(UpdateItemCommand), typeof(Item));
+            this.mapper.Map(request, item, typeof(UpdateItemCommand), typeof(GetItemByIdDto));
 
             this.itemRepository.Update(item);
 

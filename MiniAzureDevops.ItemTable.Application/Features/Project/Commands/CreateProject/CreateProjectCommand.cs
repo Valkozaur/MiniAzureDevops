@@ -2,7 +2,7 @@
 
 namespace MiniAzureDevops.ItemTable.Application.Features.Project.Commands.CreateProject
 {
-    public class CreateProjectCommand : IRequest<CreateProjectCommandResponse>
+    public class CreateProjectCommand : IRequest<CreateProjectDto>
     {
         public string Name { get; set; }
     }

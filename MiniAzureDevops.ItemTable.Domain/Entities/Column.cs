@@ -4,7 +4,7 @@ namespace MiniAzureDevops.ItemTable.Domain.Entities
 {
     public class Column : BaseEntity<Guid>
     {
-        public Column() => this.Items = new HashSet<Item>();
+        public Column() => this.Items = new HashSet<GetItemByIdDto>();
 
         public string Name { get; set; }
 
@@ -12,6 +12,6 @@ namespace MiniAzureDevops.ItemTable.Domain.Entities
 
         public Table Table { get; set; }
 
-        public HashSet<Item> Items { get; set; }
+        public HashSet<GetItemByIdDto> Items { get; set; }
     }
 }
