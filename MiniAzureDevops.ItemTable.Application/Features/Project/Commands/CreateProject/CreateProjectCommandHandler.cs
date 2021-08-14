@@ -20,15 +20,8 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Project.Commands.Create
 
         public async Task<CreateProjectCommandResponse> Handle(CreateProjectCommand request, CancellationToken cancellationToken)
         {
-            var validator = new CreateProjectCommandValidator();
-            var validatonResult = validator.Validate(request);
-
             var response = new CreateProjectCommandResponse();
-            if (!validatonResult.IsValid)
-            {
-                response.BuildErrorResponse(validatonResult.Errors);
-            }
-
+            
             if (response.Success)
             {
                 var project = new Domain.Entities.Project() { Name = request.Name };

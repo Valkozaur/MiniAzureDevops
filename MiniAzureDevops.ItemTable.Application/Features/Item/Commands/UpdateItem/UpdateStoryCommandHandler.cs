@@ -20,14 +20,6 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Story.Commands.UpdateSt
 
         public async Task<Unit> Handle(UpdateItemCommand request, CancellationToken cancellationToken)
         {
-            var validator = new UpdateStoryCommandValidator();
-            var validatorResult = validator.Validate(request);
-
-            if (!validatorResult.IsValid)
-            {
-                throw new Exceptions.ValidationException(validatorResult);
-            }
-
             var item = await this.itemRepository.GetByIdAsync(request.Id, request.ProjectId);
 
             this.mapper.Map(request, item, typeof(UpdateItemCommand), typeof(Item));

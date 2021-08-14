@@ -21,13 +21,6 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Table.Commands.CreateTa
         public async Task<Unit> Handle(CreateTableCommand request, CancellationToken cancellationToken)
         {
             var table = this.mapper.Map<Domain.Entities.Table>(request);
-
-            var validator = new CreateTableCommandValidator();
-            var validatorResult = validator.Validate(request);
-
-            if (!validatorResult.IsValid)
-                throw new Exceptions.ValidationException(validatorResult);
-
             await this.tableRepository.AddAsync(table);
 
             return Unit.Value;

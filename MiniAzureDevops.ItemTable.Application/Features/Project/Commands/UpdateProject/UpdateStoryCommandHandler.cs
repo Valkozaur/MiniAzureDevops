@@ -21,14 +21,6 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Project.Commands.Update
 
         public async Task<Unit> Handle(UpdateProjectCommand request, CancellationToken cancellationToken)
         {
-            var validator = new UpdateProjectCommandValidator();
-            var result = validator.Validate(request);
-
-            if (!result.IsValid)
-            {
-                throw new Exceptions.ValidationException(result);
-            }
-
             var project = await this.projectRepository.GetProjectById(request.Id);
             this.mapper.Map(request, project, typeof(UpdateProjectCommand), typeof(Domain.Entities.Project));
 

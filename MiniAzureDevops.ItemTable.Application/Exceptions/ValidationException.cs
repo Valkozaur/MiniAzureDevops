@@ -1,21 +1,12 @@
-﻿using FluentValidation.Results;
-using System;
-using System.Collections.Generic;
-
-namespace MiniAzureDevops.ItemTable.Application.Exceptions
+﻿namespace MiniAzureDevops.ItemTable.Application.Exceptions
 {
     public class ValidationException : ApplicationException
     {
-        public ValidationException(ValidationResult validationResult)
+        public ValidationException(string errors)
         {
-            ValidationErrors = new List<string>();
-
-            foreach (var error in validationResult.Errors)
-            {
-                ValidationErrors.Add(error.ErrorMessage);
-            }
+            this.ValidationErrors = errors;
         }
 
-        public List<string> ValidationErrors { get; set; }
+        public string ValidationErrors { get; set; }
     }
 }

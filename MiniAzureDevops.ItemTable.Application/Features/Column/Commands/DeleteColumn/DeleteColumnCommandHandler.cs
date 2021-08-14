@@ -21,12 +21,6 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Column.Commands.DeleteC
             if (column == null)
                 throw new Exceptions.NotFoundException(nameof(Domain.Entities.Column), request.ColumnId);
 
-            var validator = new DeleteColumnCommandValidator(this.columnRepository);
-            var validationResult = await validator.ValidateAsync(request);
-
-            if (!validationResult.IsValid)
-                throw new Exceptions.ValidationException(validationResult);
-
             this.columnRepository.Delete(column);
 
             return Unit.Value;
