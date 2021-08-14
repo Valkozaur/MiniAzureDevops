@@ -1,9 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
 using MiniAzureDevops.ItemTable.Application.Contracts.Persistance;
-using MiniAzureDevops.ItemTable.Application.Extensions;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace MiniAzureDevops.ItemTable.Application.Features.Project.Commands.CreateProject
 {

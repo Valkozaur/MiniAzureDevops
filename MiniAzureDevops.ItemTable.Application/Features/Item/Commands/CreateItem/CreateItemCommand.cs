@@ -1,6 +1,5 @@
 ﻿using MediatR;
 using MiniAzureDevops.ItemTable.Domain.Entities.Enumerations;
-using System;
 
 namespace MiniAzureDevops.ItemTable.Application.Features.Story.Commands.CreateStory
 {

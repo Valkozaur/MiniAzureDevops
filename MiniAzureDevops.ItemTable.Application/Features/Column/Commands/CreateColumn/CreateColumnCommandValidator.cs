@@ -1,7 +1,5 @@
 ﻿using FluentValidation;
 using MiniAzureDevops.ItemTable.Application.Contracts.Persistance;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace MiniAzureDevops.ItemTable.Application.Features.Column.Commands.CreateColumn
 {

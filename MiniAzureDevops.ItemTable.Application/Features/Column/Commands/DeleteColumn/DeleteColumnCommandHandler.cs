@@ -1,8 +1,5 @@
 ﻿using MediatR;
 using MiniAzureDevops.ItemTable.Application.Contracts.Persistance;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace MiniAzureDevops.ItemTable.Application.Features.Column.Commands.DeleteColumn
 {
@@ -22,6 +19,7 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Column.Commands.DeleteC
                 throw new Exceptions.NotFoundException(nameof(Domain.Entities.Column), request.ColumnId);
 
             this.columnRepository.Delete(column);
+            await this.columnRepository.SaveChangesAsync();
 
             return Unit.Value;
         }

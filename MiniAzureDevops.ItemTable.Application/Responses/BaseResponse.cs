@@ -1,5 +1,4 @@
 ﻿using MiniAzureDevops.ItemTable.Application.Contracts.Responses;
-using System.Collections.Generic;
 
 namespace MiniAzureDevops.ItemTable.Application.Responses
 {

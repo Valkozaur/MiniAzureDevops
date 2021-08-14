@@ -1,8 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using MiniAzureDevops.ItemTable.Application.Contracts.Persistance;
-using System.Threading;
-using System.Threading.Tasks;
+using MiniAzureDevops.ItemTable.Application.Exceptions;
 
 namespace MiniAzureDevops.ItemTable.Application.Features.Column.Commands.UpdateColumn
 {
@@ -24,7 +23,7 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Column.Commands.UpdateC
             var columnToUpdate = await this.columnRepository.GetByIdAsync(request.ColumnId);
 
             if (columnToUpdate == null)
-                throw new Exceptions.NotFoundException(nameof(Domain.Entities.Column), request.ColumnId);
+                throw new NotFoundException(nameof(Domain.Entities.Column), request.ColumnId);
 
             this.mapper.Map(request, columnToUpdate, typeof(UpdateColumnCommand), typeof(Domain.Entities.Column));
 

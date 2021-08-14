@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace MiniAzureDevops.ItemTable.Application.Features.Project.Commands.CreateProject
+﻿namespace MiniAzureDevops.ItemTable.Application.Features.Project.Dtos
 {
     public class ProjectDto
     {

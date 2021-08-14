@@ -1,6 +1,3 @@
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
-
 namespace MiniAzureDevops.ItemTable.Api
 {
     public class Program

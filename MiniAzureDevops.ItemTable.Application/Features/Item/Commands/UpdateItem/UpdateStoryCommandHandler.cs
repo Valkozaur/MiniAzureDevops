@@ -2,8 +2,6 @@
 using MediatR;
 using MiniAzureDevops.ItemTable.Application.Contracts.Persistance;
 using MiniAzureDevops.ItemTable.Domain.Entities;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace MiniAzureDevops.ItemTable.Application.Features.Story.Commands.UpdateStory
 {

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace MiniAzureDevops.ItemTable.Domain.Common
+﻿namespace MiniAzureDevops.ItemTable.Domain.Common
 {
     public class BaseEntity<TKey> : IAuditInfo
     {

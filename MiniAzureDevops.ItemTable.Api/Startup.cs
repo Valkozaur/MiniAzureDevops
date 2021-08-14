@@ -1,8 +1,3 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using MiniAzureDevops.ItemTable.Api.Middlewares;
 using MiniAzureDevops.ItemTable.Application;
@@ -53,7 +48,7 @@ namespace MiniAzureDevops.ItemTable.Api
 
             app.UseRouting();
 
-            app.UseCors("Open");
+            app.UseCors("AllowAllOrigins");
 
             app.UseCustomExceptionHandler();
 

@@ -1,13 +1,10 @@
 ﻿using AutoMapper;
 using MediatR;
 using MiniAzureDevops.ItemTable.Application.Contracts.Persistance;
-using MiniAzureDevops.ItemTable.Application.Extensions;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace MiniAzureDevops.ItemTable.Application.Features.Column.Commands.CreateColumn
 {
-    public class CreateColumnCommandHandler : IRequestHandler<CreateColumnCommand, CreateColumnCommandResponse>
+    public class CreateColumnCommandHandler : IRequestHandler<CreateColumnCommand, CreateColumnDto>
     {
         private readonly IMapper mapper;
         private readonly IColumnRepository columnRepository;
@@ -20,25 +17,13 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Column.Commands.CreateC
             this.tableRepository = tableRepository;
         }
 
-        public async Task<CreateColumnCommandResponse> Handle(CreateColumnCommand request, CancellationToken cancellationToken)
+        public async Task<CreateColumnDto> Handle(CreateColumnCommand request, CancellationToken cancellationToken)
         {
-            var response = new CreateColumnCommandResponse();
+            var column = new Domain.Entities.Column() { Name = request.Name, TableId = request.TableId };
+            await this.columnRepository.AddAsync(column);
+            await this.columnRepository.SaveChangesAsync();
 
-            var validator = new CreateColumnCommandValidator(this.tableRepository);
-            var validatonResult = await validator.ValidateAsync(request);
-
-            if(!validatonResult.IsValid)
-            {
-                response.BuildErrorResponse(validatonResult.Errors);   
-            }
-            if (response.Success)
-            {
-                var column = new Domain.Entities.Column() { Name = request.Name, TableId = request.TableId };
-                await this.columnRepository.AddAsync(column);
-                response.Column = this.mapper.Map<CreateColumnDto>(column);
-            }
-
-            return response;
+            return this.mapper.Map<CreateColumnDto>(column);
         }
     }
 }

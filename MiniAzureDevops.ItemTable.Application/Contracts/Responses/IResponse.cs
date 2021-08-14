@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace MiniAzureDevops.ItemTable.Application.Contracts.Responses
+﻿namespace MiniAzureDevops.ItemTable.Application.Contracts.Responses
 {
     public interface IResponse
     {

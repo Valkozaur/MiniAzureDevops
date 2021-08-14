@@ -1,13 +1,10 @@
 ﻿using AutoMapper;
 using MediatR;
 using MiniAzureDevops.ItemTable.Application.Contracts.Persistance;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace MiniAzureDevops.ItemTable.Application.Features.Table.Commands.CreateTable
 {
-    public class CreateTableCommandHandler : IRequestHandler<CreateTableCommand, Unit>
+    public class CreateTableCommandHandler : IRequestHandler<CreateTableCommand, CreateTableDto>
     {
         private readonly IMapper mapper;
         private readonly ITableRepository tableRepository;
@@ -18,12 +15,13 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Table.Commands.CreateTa
             this.tableRepository = tableRepository;
         }
 
-        public async Task<Unit> Handle(CreateTableCommand request, CancellationToken cancellationToken)
+        public async Task<CreateTableDto> Handle(CreateTableCommand request, CancellationToken cancellationToken)
         {
             var table = this.mapper.Map<Domain.Entities.Table>(request);
             await this.tableRepository.AddAsync(table);
+            await this.tableRepository.SaveChangesAsync();
 
-            return Unit.Value;
+            return this.mapper.Map<CreateTableDto>(table);
         }
     }
 }

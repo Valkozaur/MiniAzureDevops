@@ -2,8 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using MiniAzureDevops.ItemTable.Application.Features.Column.Commands.CreateColumn;
 using MiniAzureDevops.ItemTable.Application.Features.Column.Queries.GetColumnsByTableId;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace MiniAzureDevops.ItemTable.Api.Controllers
 {
@@ -11,7 +9,7 @@ namespace MiniAzureDevops.ItemTable.Api.Controllers
     {
         public ColumnController(IMediator mediator) : base(mediator) { }
 
-        [HttpGet(Name = "GetColumns")]
+        [HttpGet]
         public async Task<IReadOnlyCollection<ColumnVm>> GetColumns([FromQuery]GetColumnByTableIdQuery getColumnQuery) 
             => await this.mediator.Send(getColumnQuery);
 

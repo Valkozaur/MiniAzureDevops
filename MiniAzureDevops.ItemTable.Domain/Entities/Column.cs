@@ -1,6 +1,4 @@
 ﻿using MiniAzureDevops.ItemTable.Domain.Common;
-using System;
-using System.Collections.Generic;
 
 namespace MiniAzureDevops.ItemTable.Domain.Entities
 {

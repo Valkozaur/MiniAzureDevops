@@ -3,9 +3,6 @@ using MediatR;
 
 using MiniAzureDevops.ItemTable.Application.Contracts.Persistance;
 
-using System.Threading;
-using System.Threading.Tasks;
-
 namespace MiniAzureDevops.ItemTable.Application.Features.Project.Commands.UpdateProject
 {
     public class UpdateStoryCommandHandler : IRequestHandler<UpdateProjectCommand, Unit>

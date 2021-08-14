@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace MiniAzureDevops.ItemTable.Application.Exceptions
+﻿namespace MiniAzureDevops.ItemTable.Application.Exceptions
 {
     public class BadRequestException : ApplicationException
     {

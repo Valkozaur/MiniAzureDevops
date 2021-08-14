@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace MiniAzureDevops.ItemTable.Application.Features.Table.Queries.GetTableById
+﻿namespace MiniAzureDevops.ItemTable.Application.Features.Table.Queries.GetTableById
 {
     public class TableVm
     {

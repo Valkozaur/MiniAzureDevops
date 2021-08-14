@@ -1,6 +1,4 @@
 ﻿using MediatR;
-using System;
-using System.Collections.Generic;
 
 namespace MiniAzureDevops.ItemTable.Application.Features.Column.Queries.GetColumnsByTableId
 {

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace MiniAzureDevops.ItemTable.Application.Features.Story.Queries.GetStoriesByColumnId
+﻿namespace MiniAzureDevops.ItemTable.Application.Features.Story.Queries.GetStoriesByColumnId
 {
     public class ItemVm
     {

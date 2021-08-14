@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace MiniAzureDevops.ItemTable.Application.Features.Story.Commands.CreateStory
+﻿namespace MiniAzureDevops.ItemTable.Application.Features.Story.Commands.CreateStory
 {
     public class ItemDto
     {

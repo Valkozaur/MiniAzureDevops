@@ -1,9 +1,8 @@
 ﻿using MediatR;
-using System;
 
 namespace MiniAzureDevops.ItemTable.Application.Features.Column.Commands.CreateColumn
 {
-    public class CreateColumnCommand : IRequest<CreateColumnCommandResponse>
+    public class CreateColumnCommand : IRequest<CreateColumnDto>
     {
         public Guid Id { get; set; }
 

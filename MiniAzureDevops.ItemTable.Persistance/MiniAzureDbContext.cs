@@ -1,8 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-
+﻿
 using Microsoft.EntityFrameworkCore;
 using MiniAzureDevops.ItemTable.Domain.Common;
 using MiniAzureDevops.ItemTable.Domain.Entities;

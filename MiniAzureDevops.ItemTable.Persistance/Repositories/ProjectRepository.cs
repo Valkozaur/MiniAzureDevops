@@ -1,8 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using MiniAzureDevops.ItemTable.Application.Contracts.Persistance;
+﻿using MiniAzureDevops.ItemTable.Application.Contracts.Persistance;
 using MiniAzureDevops.ItemTable.Domain.Entities;
-using System;
-using System.Threading.Tasks;
 
 namespace MiniAzureDevops.ItemTable.Persistance.Repositories
 {

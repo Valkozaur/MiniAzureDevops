@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace MiniAzureDevops.ItemTable.Application.Features.Column.Commands.CreateColumn
+﻿namespace MiniAzureDevops.ItemTable.Application.Features.Column.Commands.CreateColumn
 {
     public class CreateColumnDto
     {
