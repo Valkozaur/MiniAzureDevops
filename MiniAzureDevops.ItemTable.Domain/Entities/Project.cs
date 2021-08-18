@@ -8,7 +8,7 @@ namespace MiniAzureDevops.ItemTable.Domain.Entities
 
         public ICollection<Table> Tables { get; set; } = new HashSet<Table>();
 
-        public ICollection<GetItemByIdDto> Items { get; set; } = new HashSet<GetItemByIdDto>();
+        public ICollection<Item> Items { get; set; } = new HashSet<Item>();
     }
 }
     

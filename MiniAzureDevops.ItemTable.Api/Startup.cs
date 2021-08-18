@@ -1,6 +1,8 @@
 using Microsoft.OpenApi.Models;
 using MiniAzureDevops.ItemTable.Api.Middlewares;
 using MiniAzureDevops.ItemTable.Application;
+using MiniAzureDevops.ItemTable.Application.Mapping;
+using System.Reflection;
 
 namespace MiniAzureDevops.ItemTable.Api
 {
@@ -23,6 +25,8 @@ namespace MiniAzureDevops.ItemTable.Api
                                       .AllowAnyHeader()
                                       .AllowAnyMethod());
             });
+
+            AutoMapperConfig.RegisterMappings(typeof(IMapFrom<>).GetTypeInfo().Assembly);
 
             services.AddApplicationServices();
             services.AddSQLPersistanceServices(this.Configuration);

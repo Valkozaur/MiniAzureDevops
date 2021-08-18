@@ -3,7 +3,7 @@ using MiniAzureDevops.ItemTable.Domain.Entities.Enumerations;
 
 namespace MiniAzureDevops.ItemTable.Domain.Entities
 {
-    public class GetItemByIdDto : BaseEntity<int>
+    public class Item : BaseEntity<int>
     {
         public string Name { get; set; }
 
@@ -25,8 +25,8 @@ namespace MiniAzureDevops.ItemTable.Domain.Entities
 
         public int? ParentId { get; set; }
 
-        public GetItemByIdDto Parent { get; set; }
+        public Item Parent { get; set; }
 
-        public ICollection<GetItemByIdDto> Children { get; set; } = new HashSet<GetItemByIdDto>();
+        public ICollection<Item> Children { get; set; } = new HashSet<Item>();
     }
 }

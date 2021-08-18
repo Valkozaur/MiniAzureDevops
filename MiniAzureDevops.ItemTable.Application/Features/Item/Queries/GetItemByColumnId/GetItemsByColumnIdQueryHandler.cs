@@ -4,7 +4,7 @@ using MiniAzureDevops.ItemTable.Application.Contracts.Persistance;
 
 namespace MiniAzureDevops.ItemTable.Application.Features.Story.Queries.GetStoriesByColumnId
 {
-    public class GetItemsByColumnIdQueryHandler : IRequestHandler<GetItemsByColumnIdQuery, IReadOnlyCollection<GetItemByIdm>>
+    public class GetItemsByColumnIdQueryHandler : IRequestHandler<GetItemsByColumnIdQuery, IReadOnlyCollection<GetItemByIdVm>>
     {
         private IMapper mapper;
         private readonly IItemRepository itemRepository;
@@ -15,10 +15,10 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Story.Queries.GetStorie
             this.itemRepository = itemRepository;
         }
 
-        public async Task<IReadOnlyCollection<GetItemByIdm>> Handle(GetItemsByColumnIdQuery request, CancellationToken cancellationToken)
+        public async Task<IReadOnlyCollection<GetItemByIdVm>> Handle(GetItemsByColumnIdQuery request, CancellationToken cancellationToken)
         {
             var stories = await this.itemRepository.GetItemsByColumnId(request.ColumnId);
-            return this.mapper.Map<IReadOnlyCollection<GetItemByIdm>>(stories);
+            return this.mapper.Map<IReadOnlyCollection<GetItemByIdVm>>(stories);
         }
     }
 }

@@ -4,9 +4,9 @@ using MiniAzureDevops.ItemTable.Domain.Entities;
 
 namespace MiniAzureDevops.ItemTable.Persistance.ModelConfigurations
 {
-    public class ItemModelConfiguration : IEntityTypeConfiguration<GetItemByIdDto>
+    public class ItemModelConfiguration : IEntityTypeConfiguration<Item>
     {
-        public void Configure(EntityTypeBuilder<GetItemByIdDto> builder)
+        public void Configure(EntityTypeBuilder<Item> builder)
         {
             builder
                 .HasKey(i => new { i.Id, i.ProjectId });

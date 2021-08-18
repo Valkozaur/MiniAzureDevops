@@ -2,10 +2,10 @@
 
 namespace MiniAzureDevops.ItemTable.Application.Contracts.Persistance
 {
-    public interface IItemRepository : IAsyncRepository<GetItemByIdDto>
+    public interface IItemRepository : IAsyncRepository<Item>
     {
-        Task<GetItemByIdDto> GetByIdAsync(int itemId, Guid projectId);
+        Task<Item> GetByIdAsync(int itemId, Guid projectId);
 
-        Task<IEnumerable<GetItemByIdDto>> GetItemsByColumnId(Guid columnId);
+        Task<IEnumerable<Item>> GetItemsByColumnId(Guid columnId);
     }
 }

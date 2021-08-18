@@ -1,9 +1,10 @@
 ﻿using MediatR;
+using MiniAzureDevops.ItemTable.Application.Mapping;
 using MiniAzureDevops.ItemTable.Domain.Entities.Enumerations;
 
 namespace MiniAzureDevops.ItemTable.Application.Features.Story.Commands.CreateStory
 {
-    public class CreateItemCommand : IRequest<CreateItemDto>
+    public class CreateItemCommand : IRequest<CreateItemVm>, IMapTo<Domain.Entities.Item>
     {
         public string Name { get; set; }
 

@@ -6,7 +6,8 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Project.Queries.GetProj
     {
         public GetProjectByIdQueryValidator()
         {
-
+            RuleFor(x => x.ProjectId)
+                .NotEmpty().WithMessage("Guid cannot be null!");
         }
     }
 }

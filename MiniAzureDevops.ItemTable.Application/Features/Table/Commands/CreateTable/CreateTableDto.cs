@@ -1,6 +1,8 @@
-﻿namespace MiniAzureDevops.ItemTable.Application.Features.Table.Commands.CreateTable
+﻿using MiniAzureDevops.ItemTable.Application.Mapping;
+
+namespace MiniAzureDevops.ItemTable.Application.Features.Table.Commands.CreateTable
 {
-    public class CreateTableDto
+    public class CreateTableDto : IMapFrom<Domain.Entities.Table>
     {
         public Guid Id { get; set; }
 

@@ -4,6 +4,6 @@ namespace MiniAzureDevops.ItemTable.Application.Contracts.Persistance
 {
     public interface IProjectRepository : IAsyncRepository<Project>
     {
-        Task<Project> GetProjectById(Guid id);
+        Task<T> GetProjectById<T>(Guid id);
     }
 }

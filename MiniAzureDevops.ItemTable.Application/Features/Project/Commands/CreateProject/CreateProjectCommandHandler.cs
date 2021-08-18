@@ -17,7 +17,7 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Project.Commands.Create
 
         public async Task<CreateProjectDto> Handle(CreateProjectCommand request, CancellationToken cancellationToken)
         {
-            var project = new Domain.Entities.Project() { Name = request.Name };
+            var project = this.mapper.Map<Domain.Entities.Project>(request);
             await this.projectRepository.AddAsync(project);
             await this.projectRepository.SaveChangesAsync();
             return this.mapper.Map<CreateProjectDto>(project);

@@ -14,7 +14,7 @@ namespace MiniAzureDevops.ItemTable.Api.Controllers
 
 
         [HttpGet("{id}")]
-        public async Task<TableVm> GetTable([FromBody] GetTableByIdQuery query)
+        public async Task<GetTableByIdVm> GetTable([FromBody] GetTableByIdQuery query)
             => await this.mediator.Send(query);
 
         [HttpPost]

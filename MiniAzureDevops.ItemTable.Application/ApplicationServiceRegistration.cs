@@ -1,6 +1,8 @@
-﻿using FluentValidation;
+﻿using AutoMapper;
+using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using MiniAzureDevops.ItemTable.Application.Mapping;
 using MiniAzureDevops.ItemTable.Application.Pipelines;
 using System.Reflection;
 
@@ -10,8 +12,8 @@ namespace MiniAzureDevops.ItemTable.Application
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
-            services.AddAutoMapper(Assembly.GetExecutingAssembly());
-
+            //services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            services.AddSingleton(typeof(IMapper), AutoMapperConfig.MapperInstance);
             // Add all the assemblies to MediatR
             services.AddMediatR(typeof(ApplicationServiceRegistration).GetTypeInfo().Assembly);
 

@@ -15,7 +15,7 @@ namespace MiniAzureDevops.ItemTable.Persistance
 
         public DbSet<Column> Columns { get; set; }
 
-        public DbSet<GetItemByIdDto> Items { get; set; }
+        public DbSet<Item> Items { get; set; }
 
         public int MyProperty { get; set; }
 

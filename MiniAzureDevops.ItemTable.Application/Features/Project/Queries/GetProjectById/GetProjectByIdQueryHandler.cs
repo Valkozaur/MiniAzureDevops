@@ -18,13 +18,12 @@ namespace MiniAzureDevops.ItemTable.Application.Features.Project.Queries.GetProj
 
         public async Task<GetProjectByIdDto> Handle(GetProjectByIdQuery request, CancellationToken cancellationToken)
         {
-            var project = await this.projectRepository.GetProjectById(request.ProjectId);
+            var project = await this.projectRepository.GetProjectById<GetProjectByIdDto>(request.ProjectId);
 
             if (project == null)
                 throw new NotFoundException("Project", request.ProjectId);
 
-            return this.mapper.Map<GetProjectByIdDto>(project);
-
+            return project;
         }
     }
 }

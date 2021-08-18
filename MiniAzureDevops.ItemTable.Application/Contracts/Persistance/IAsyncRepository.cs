@@ -1,4 +1,6 @@
-﻿namespace MiniAzureDevops.ItemTable.Application.Contracts.Persistance
+﻿using AutoMapper;
+
+namespace MiniAzureDevops.ItemTable.Application.Contracts.Persistance
 {
     public interface IAsyncRepository<TEntity>  : IDisposable
         where TEntity : class

@@ -6,6 +6,9 @@ namespace MiniAzureDevops.ItemTable.Application.Contracts.Persistance
     {
         Task<Table> GetByIdAsync(Guid tableId);
 
+        Task<IEnumerable<Т>> GetByProjectIdAsync<Т>(Guid projectId);
+
+
         Task<int> GetColumnCountByIdAsync(Guid tableId);
 
         Task<bool> ColumnNameIsUnique(Guid tableId, string columnName);

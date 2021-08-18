@@ -1,6 +1,8 @@
-﻿namespace MiniAzureDevops.ItemTable.Application.Features.Story.Queries.GetStoriesByColumnId
+﻿using MiniAzureDevops.ItemTable.Application.Mapping;
+
+namespace MiniAzureDevops.ItemTable.Application.Features.Story.Queries.GetStoriesByColumnId
 {
-    public class GetItemByIdm
+    public class GetItemByIdVm : IMapFrom<Domain.Entities.Item>
     {
         public Guid Id { get; set; }
 
