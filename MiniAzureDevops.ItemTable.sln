@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiniAzureDevops.ItemTable.P
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiniAzureDevops.ItemTable.Api", "MiniAzureDevops.ItemTable.Api\MiniAzureDevops.ItemTable.Api.csproj", "{82294D7C-F821-4D75-84AC-0AE2FB1D5B6D}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiniAzureDevops.IDP", "MiniAzureDevops.IDP\MiniAzureDevops.IDP.csproj", "{7045E1E9-73A7-4412-918C-81766445FF34}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{82294D7C-F821-4D75-84AC-0AE2FB1D5B6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82294D7C-F821-4D75-84AC-0AE2FB1D5B6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82294D7C-F821-4D75-84AC-0AE2FB1D5B6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7045E1E9-73A7-4412-918C-81766445FF34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7045E1E9-73A7-4412-918C-81766445FF34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7045E1E9-73A7-4412-918C-81766445FF34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7045E1E9-73A7-4412-918C-81766445FF34}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

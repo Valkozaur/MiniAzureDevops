@@ -1,7 +1,4 @@
-﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
-// Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
-
-
+﻿using IdentityServer4;
 using IdentityServer4.Models;
 using System.Collections.Generic;
 
@@ -12,7 +9,8 @@ namespace MiniAzureDevops.IDP
         public static IEnumerable<IdentityResource> IdentityResources =>
             new IdentityResource[]
             { 
-                new IdentityResources.OpenId()
+                new IdentityResources.OpenId(),
+                new IdentityResources.Profile()
             };
 
         public static IEnumerable<ApiScope> ApiScopes =>
@@ -21,6 +19,26 @@ namespace MiniAzureDevops.IDP
 
         public static IEnumerable<Client> Clients =>
             new Client[] 
-            { };
+            { 
+                new Client()
+                {
+                    ClientName = "MiniAzureDevops.ItemTable",
+                    ClientId= "miniazuredevopsclient",
+                    AllowedGrantTypes = GrantTypes.Code,
+                    RedirectUris = new string[]
+                    {
+                        "https://localhost:5001/singin-oidc"
+                    },
+                    AllowedScopes =
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                    },
+                    ClientSecrets =
+                    {
+                        new Secret("secret".Sha256())
+                    }
+                }
+            };
     }
 }
